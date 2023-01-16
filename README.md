@@ -26,7 +26,7 @@ For each day of the camp, a guide will be provided - this guide will contain dif
 - One or several [🧩 lesson(s)](#lesson-🧩): those lessons will cover topics that will be useful when working on your core project.
 - A list of [✏️ questions](#questions-✏️) based on the lectures & lesson(s) of that day. 
 - A list of [🥊 coding challenges](#challenges-🥊) based on the lectures & lesson(s) of that day.
-- A [task 🎯](#🎯-tasks) that helps you make consistent progress on your core project, which will usually be related to the content you've studient on that day.
+- A [task 🎯](#🧹-tasks) that helps you make consistent progress on your core project, which will usually be related to the content you've studient on that day.
 - A [🔗 useful-links](#🔗-useful-links) section that contains useful resources & documentation.
 
 You can find the guides for the different days:
@@ -133,7 +133,7 @@ The prizes are great, but keep in mind that this isn't a hackathon and the focus
 
 > <strong> The gift of knowledge is the highest gift in the world. </strong>
 
-# 📚 Ressources 
+# 📚 Resources 
 <a href="https://internetcomputer.org/docs/current/developer-docs/ic-overview" target="_blank"> **Internet Computer documentation** </a>: The main documentation website for the Internet Computer.
 
 <a href="https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/motoko" target="_blank"> **Motoko Language documentation** </a>: The main documentation for the Motoko language.
