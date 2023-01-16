@@ -1,6 +1,6 @@
 # 👻 Motoko Bootcamp 2023
 
-<p align="centro"><img src="./poster.png" ancho="500px"> </p>
+<p align="centro"><img src="../poster.png" ancho="500px"> </p>
 
 ----Este archivo se encuentra en proceso de traducción.----
 
@@ -25,18 +25,18 @@ Para cada día del campamento, se proporcionará una guía; esta guía contendr�
 - Una lista de [🍿 conferencias](#conferencias-🍿) y una descripción general de los temas tratados ese día. También puede ver la lista de conferencias consultando el [calendario](https://calendar.google.com/calendar/u/0/embed?src=e0a9c944a17afc070ed77f9f10688eaac557ebd0251c5e6d0b724253506d43b3@group.calendar.google.com).
 - Una o varias [🧩 lección(es)](#lección-🧩): esas lecciones cubrirán temas que serán útiles cuando trabajes en tu proyecto principal.
 - Una lista de [✏️ preguntas](#preguntas-✏️) basadas en las conferencias y lecciones de ese día.
-- Una lista de [🥊 desafíos de codificación] (#desafíos-🥊) basada en las conferencias y lecciones de ese día.
+- Una lista de [🥊 desafíos de codificación](#desafíos-🥊) basada en las conferencias y lecciones de ese día.
 - Una [tarea 🎯](#🧹-tareas) que te ayuda a lograr un progreso constante en tu proyecto principal, que generalmente estará relacionado con el contenido que has estudiado ese día.
 - Una sección de [🔗 enlaces útiles](#🔗-enlaces útiles) que contiene recursos y documentación útiles.
 
 Puedes encontrar las guías para los diferentes días:
-- [Día 1️⃣](./daily_guides/day_1/GUIDE.MD) [LANZADO]
-- [Día 2️⃣](./daily_guides/day_2/GUIDE.MD) [PUBLICACIÓN: 17 a. m. UTC]
-- [Día 3️⃣](./daily_guides/day_3/GUIDE.MD) [PUBLICACIÓN: 18 a. m. UTC]
-- [Día 4️⃣](./daily_guides/day_4/GUIDE.MD) [PUBLICACIÓN: 19 a. m. UTC]
-- [Día 5️⃣](./daily_guides/day_5/GUIDE.MD) [PUBLICACIÓN: 20, 9 a.m. UTC]
-- [Día 6️⃣](./daily_guides/day_6/GUIDE.MD) [PUBLICACIÓN: 21, 9 a. m. UTC]
-- [Día 7️⃣](./daily_guides/day_7/GUIDE.MD) [PUBLICACIÓN: 22, 9 a. m. UTC]
+- [Día 1️⃣](./guias_diarias/dia_1/GUIA.MD) [LANZADO]
+- [Día 2️⃣](./guias_diarias/dia_2/GUIA.MD) [PUBLICACIÓN: 17 a. m. UTC]
+- [Día 3️⃣](./guias_diarias/dia_3/GUIA.MD) [PUBLICACIÓN: 18 a. m. UTC]
+- [Día 4️⃣](./guias_diarias/dia_4/GUIA.MD) [PUBLICACIÓN: 19 a. m. UTC]
+- [Día 5️⃣](./guias_diarias/dia_5/GUIA.MD) [PUBLICACIÓN: 20, 9 a.m. UTC]
+- [Día 6️⃣](./guias_diarias/dia_6/GUIA.MD) [PUBLICACIÓN: 21, 9 a. m. UTC]
+- [Día 7️⃣](./guias_diarias/dia_7/GUIA.MD) [PUBLICACIÓN: 22, 9 a. m. UTC]
 
 # 🍿 Conferencias
 Los mentores impartirán conferencias en vivo en Zoom Webinar (cada mentor es un miembro experimentado de la comunidad que contribuye activamente al ecosistema).
@@ -78,7 +78,7 @@ Se proporcionará una lista de recursos útiles, como sitios web, documentación
 # 🧑‍🔬 Proyecto principal
 El proyecto central es un proyecto que construirás durante toda la semana.
 La experiencia de construir este proyecto será lo más parecida posible a la experiencia de construir un proyecto real en Internet Computer. <br/>
-Toda la información relacionada con el proyecto principal se puede encontrar en **[este documento](core_project/PROJECT.MD)**. El formulario de presentación del proyecto básico estará disponible el día 7.
+Toda la información relacionada con el proyecto principal se puede encontrar en **[este documento](./proyecto_principal/PROYECTO.MD)**. El formulario de presentación del proyecto básico estará disponible el día 7.
 
 # 🐥 Horario de tutoría abierto
 A lo largo de la semana hay algunas Horas de mentores de desarrollo abierto programadas, debe tener al menos 2 dentro de su zona horaria. <br/>
@@ -118,7 +118,7 @@ Nota: es posible que su problema se resuelva solo en la próxima sesión de ment
 
 # 🎓 Niveles de graduación
 - **Graduado** | Envió un proyecto principal que cumplió con los requisitos.
-- **Graduado con honores** | Presentó un proyecto básico que cumplió con los requisitos y fue más allá al cumplir también con los requisitos de posgrado con honores [descritos en la guía del proyecto básico] (core_project/PROJECT.MD).
+- **Graduado con honores** | Presentó un proyecto básico que cumplió con los requisitos y fue más allá al cumplir también con los requisitos de posgrado con honores [descritos en la guía del proyecto básico](./proyecto_principal/PROYECTO.MD).
 - **Graduado como el mejor de su clase** | Envió un proyecto central que incluía características adicionales únicas más allá de los requisitos que proporcionamos, y los mentores de desarrollo encontraron su envío excepcional.
 - **Top 3** | 3 estudiantes tendrán el honor de ser juzgados por tener las 3 presentaciones más impresionantes.
 
