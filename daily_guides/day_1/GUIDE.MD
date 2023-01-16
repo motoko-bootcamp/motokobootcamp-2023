@@ -71,7 +71,7 @@ actor {
 };
 ```
 An actor is simply the representation of a canister for the Motoko language. <br/>
-This nomenclature comes from the [Actor model](https://en.wikipedia.org/wiki/Actor_model) which is a way to write computer programs that can handle many tasks at the same time. It does this by treating "actors" as the basic building blocks of the program. <br/> An actor is a small computer program that can receive messages, do some work and then send messages to other actors. Actors can also create new actors and control them. All the actors talk to each other by sending messages. Sunce all interaction between actors is done via message passing, this allows for very high levels of concurrency and parallelism, making it well-suited for distributed systems (and that's exactly what the Internet Computer is!).
+This nomenclature comes from the [Actor model](https://en.wikipedia.org/wiki/Actor_model) which is a way to write computer programs that can handle many tasks at the same time. It does this by treating "actors" as the basic building blocks of the program. <br/> An actor is a small computer program that can receive messages, do some work and then send messages to other actors. Actors can also create new actors and control them. All the actors talk to each other by sending messages. Since all interaction between actors is done via message passing, this allows for very high levels of concurrency and parallelism, making it well-suited for distributed systems (and that's exactly what the Internet Computer is!).
 
 **In that regard the Internet Computer is like a giant world computer where each program is a canister.**
 
