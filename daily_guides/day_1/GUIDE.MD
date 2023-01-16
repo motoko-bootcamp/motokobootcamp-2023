@@ -2,7 +2,7 @@
 Welcome to your very 1st day into the **Motoko Bootcamp 2023**.
 
 Today is packed with a lot of activities and lectures. This first day will be intense, but take the opportunity to bond with your teammates and settle in for the journey ahead! <br/>
-There is no [task](../../README.md/#tasks-🎯) planned for today, but get ready because tomorrow you'll have your first one and be starting the [core project](../../core_project/PROJECT.md).
+Get ready because tomorrow you'll have your first one and be starting the [core project](https://github.com/motoko-bootcamp/motokobootcamp-2023/blob/main/core_project/PROJECT.MD)
 
 Today is an introduction to Motoko: there is a lot to cover! Don't stress if you fall behind. Take the time needed to understand the material. Have fun, stay focused and let's survive this together 💪
 
