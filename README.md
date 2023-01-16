@@ -2,7 +2,7 @@
 
 <p align="center"><img src="./poster.png" width="500px"> </p>
 
-La traducción al español está en proceso. Mientras tanto, utilice Google para traducir esta página web.
+La traducción al español puedes encontrarla [aquí](./spanish/README.md).
 
 Welcome to all **Moto-campers** 👋 <br/>
 
