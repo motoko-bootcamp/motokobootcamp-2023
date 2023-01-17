@@ -73,7 +73,7 @@ let words : [Text] = ["Motoko", "es", "el", "mejor", "lenguaje"];
 ```
 > Al contrario de algunos lenguajes de programación que son más flexibles (JavaScript), en Motoko no podemos mezclar elementos de diferentes tipos en la misma matriz.
 
-<p align="center"> <img src="./img/array.png" width="600px" style="border: 2px solid black;"></p>
+<p align="center"> <img src="../../../daily_guides/day_2/img/array.png" width="600px" style="border: 2px solid black;"></p>
 
 Para acceder a un elemento específico dentro de una matriz, usamos su índice. Tenga en cuenta que las matrices en Motoko están indexadas a cero, lo que significa que el primer elemento está en la posición 0, el segundo elemento está en la posición 1, y así sucesivamente. Por ejemplo, para acceder al primer elemento de un arreglo llamado "**myArray**", usaríamos "**myArray[0]**", y para acceder al segundo elemento, usaríamos "**myArray[1 ]**".
 
@@ -252,7 +252,7 @@ Ahora imagine que los contratos inteligentes podrían:
 
 Si eso suena interesante: ¡bienvenido al mundo de los **Canisters**! Imagina lo que los DAO podrán lograr controlando los Canisters🤯
 
-<p align="center"> <img src="img/canister.png" width="800px" style="border: 2px solid black;"></p>
+<p align="center"> <img src="../../../daily_guides/day_2/img/canister.png" width="800px" style="border: 2px solid black;"></p>
 <p align="center"> Canister Canister Canister!</p>
 Un poco más de información:
 
@@ -324,7 +324,7 @@ Para obtener más información sobre el increíble poder del NNS, consulte [Wiki
 ## 🔎 ¿Cómo funciona el NNS?
 El NNS está constituido por **diferentes Canisters**. Cada Canister se implementa en la misma subred que también se denomina [subred NNS](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6- eqe).
 
-<p align="center"> <img src="./img/nns_recap.png" width="800px" style="border: 2px solid black;"> </p>
+<p align="center"> <img src="../../../daily_guides/day_2/img/nns_recap.png" width="800px" style="border: 2px solid black;"> </p>
 <p align="center"> Visión general de canisters corriendo la NNS</p>
 
 - [Ledger](https://icscan.io/canister/ryjl3-tyaaa-aaaaa-aaaba-cai): Este Canister es responsable de controlar el saldo de ICP para todos los usuarios, procesar transacciones, acuñar y quemar ICP.
