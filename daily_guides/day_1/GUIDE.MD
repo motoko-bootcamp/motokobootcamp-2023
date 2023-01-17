@@ -195,8 +195,6 @@ return name;
 ``` 
 For instance - calling change_name("Motoko") would returns "**Motoko**".
 
-A function always need to return something, that's why you should always end the body of your functions with a "**return**" statement.
-
 ## <a id="errors"> ❌ Errors </a>
 Let's take a look at the following code:
 <p align="center"> <img src="./img/motoko_type_error.png" width="800px" style="border: 2px solid black;"> </p>
