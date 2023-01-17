@@ -62,7 +62,7 @@ They are two types of calls:
 <p align="center"> The call is processed by a single node.</p>
 
 ## <a id="what-is-an-actor"> 📬 What is an Actor? </a>
-If you open any main.mo file you will notice that the first word is **actor**:
+If you open any `main.mo `file you will notice that the first word is **actor**:
 ```
 actor {
 
@@ -71,7 +71,7 @@ actor {
 };
 ```
 An actor is simply the representation of a canister for the Motoko language. <br/>
-This nomenclature comes from the [Actor model](https://en.wikipedia.org/wiki/Actor_model) which is a way to write computer programs that can handle many tasks at the same time. It does this by treating "actors" as the basic building blocks of the program. <br/> An actor is a small computer program that can receive messages, do some work and then send messages to other actors. Actors can also create new actors and control them. All the actors talk to each other by sending messages. Sunce all interaction between actors is done via message passing, this allows for very high levels of concurrency and parallelism, making it well-suited for distributed systems (and that's exactly what the Internet Computer is!).
+This nomenclature comes from the [Actor model](https://en.wikipedia.org/wiki/Actor_model) which is a way to write computer programs that can handle many tasks at the same time. It does this by treating "actors" as the basic building blocks of the program. <br/> An actor is a small computer program that can receive messages, do some work and then send messages to other actors. Actors can also create new actors and control them. All the actors talk to each other by sending messages. Since all interaction between actors is done via message passing, this allows for very high levels of concurrency and parallelism, making it well-suited for distributed systems (and that's exactly what the Internet Computer is!).
 
 **In that regard the Internet Computer is like a giant world computer where each program is a canister.**
 
@@ -99,7 +99,7 @@ However, if we try the following code:
 let a = 4;
 a := 5;
 ```
-An attempt is made to reassign a value to an immutable variable - that's why an error will occur. The specific error message will be "type error [M0073], expected mutable assignment target." This error message indicates that the variable being reassigned is immutable and cannot be changed.
+An attempt is made to reassign a value to an immutable variable - that's why an error will occur. The specific error message will be `type error [M0073], expected mutable assignment target.` This error message indicates that the variable being reassigned is immutable and cannot be changed.
 
 ## <a id="types"> 🍎 Types </a>
 The Motoko language places a strong emphasis on types, and is more strict in enforcing them compared to other general-purpose languages like Javascript or Python. This strictness serves a purpose, as it helps prevent errors and issues.
@@ -193,7 +193,7 @@ name := new_name;
 ```
 return name; 
 ``` 
-For instance - calling change_name("Motoko") would returns "**Motoko**".
+For instance - calling `change_name("Motoko")` would returns "**Motoko**".
 
 A function always need to return something, that's why you should always end the body of your functions with a "**return**" statement.
 
@@ -362,7 +362,7 @@ The greet dApp has both a backend and a frontend, and the frontend accesses the 
 - greet_backend 
 - greet_frontend
 
-Let's take a look at the frontend's JavaScript file located at src/greet_frontend/src/index.js . This file is responsible for handling the front-end logic of the greet dApp. The front-end and back-end are connected using the Candid interface which allows the front-end to access the back-end services.
+Let's take a look at the frontend's JavaScript file located at `src/greet_frontend/src/index.js` . This file is responsible for handling the front-end logic of the greet dApp. The front-end and back-end are connected using the Candid interface which allows the front-end to access the back-end services.
 
 ```javascript
 import { greet_backend } from "../../declarations/greet_backend";
