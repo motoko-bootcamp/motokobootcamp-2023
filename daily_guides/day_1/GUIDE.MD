@@ -62,7 +62,7 @@ They are two types of calls:
 <p align="center"> The call is processed by a single node.</p>
 
 ## <a id="what-is-an-actor"> 📬 What is an Actor? </a>
-If you open any `main.mo `file you will notice that the first word is **actor**:
+If you open any `main.mo` file you will notice that the first word is **actor**:
 ```
 actor {
 
