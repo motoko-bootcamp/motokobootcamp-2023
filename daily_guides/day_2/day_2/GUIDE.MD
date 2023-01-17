@@ -337,7 +337,7 @@ NB: The NNS-UI is currently the main user-friendly interface for the NNS but not
 As we seen with the example of the NNS - building a DAO can involve deploying and managing multiple canisters. 
 
 ## 🏗️ Architecture for our project
-We want to build **a DAO that manages a simple website** and grants voting power based on the [Motoko Bootcamp token](../../core_project/PROJECT.md#motoko-bootcamp-token-faucet-💰). 
+We want to build **a DAO that manages a simple website** and grants voting power based on the [Motoko Bootcamp token](../../core_project/PROJECT.md#-token-faucet). 
 We will need the following canisters:
 - A backend canister: this canister will be responsible for managing the logic of our DAO: keeping track of members, proposals, votes & taking actions whenever a proposal is passed.
 You will have to write the entire logic for this canister yourself!
@@ -350,7 +350,7 @@ Since this week is focused on Motoko and creating an interface requires other sk
 
 - A ledger canister for the Motoko Bootcamp token: this canister is reponsible for controlling the balance of MB tokens for all users, processing transactions, minting & burning MB tokens.
 This canister will be the same for all students. We have already created this canister and you will only have to interface with it. This token is following the ICRC_1 standard.
-You can mint as much Motoko Bootcamp token as you need during the week. For more information - read [the dedicated section](../../core_project/PROJECT.md#motoko-bootcamp-token-faucet-💰)
+You can mint as much Motoko Bootcamp token as you need during the week. For more information - read [the dedicated section](../../core_project/PROJECT.md#-token-faucet)
 
 
 # 🧹 Task: create the skeleton for the core project.
