@@ -518,7 +518,7 @@ actor {
 
 # Coding challenges 🧑‍💻
 
-> For the challenges of today you will have to change the habitual structure of your repository & instead of having a unique `challenge.mo` file you'll have three files: `utils.mo`, `animal.mo` & `main.mo`. <br/>
+> For the challenges of today you will have to change the habitual structure of your repository & instead of having a unique `challenge.mo` file you'll have three files: `utils.mo`, `book.mo` & `main.mo`. <br/>
 >  You can check the corresponding structure in the [example repository](https://github.com/sebthuillier/motokobootcamp2023).
 
 1. In your file called `utils.mo`: create a function called `second_maximum` that takes an array [Int] of integers and returns the second largest number in the array.
