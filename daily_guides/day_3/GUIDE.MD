@@ -1,21 +1,21 @@
 # Day 3 🐥
-Welcome to Day 3 of the Motoko Bootcamp! <br/> We hope you're feeling like a coding ninja ready to take on even more advanced topics. Today, we'll be diving into HTTP requests in Motoko and learning how to interact with canisters from a frontend using the JavaScript Agent. You'll also learn about pattern matching and variants in Motoko, which will give you the power to control your code! <br/>
+Welcome to Day 3 of the Motoko Bootcamp! <br/> We hope you're feeling like a coding ninja ready to take on even more advanced topics. Today, we'll be diving into HTTP requests in Motoko and learning how to interact with canisters from a front end using the JavaScript Agent. You'll also learn about pattern matching and variants in Motoko, which will give you the power to control your code! <br/>
 In addition, we'll also be introducing data structures such as HashMap/TrieMap and CRUD operations. These data structures will be really useful when working on the [core project](../../core_project/PROJECT.md). <br/>
 
 Don't hesitate to ask for help from your teammates or mentors if you need it. Remember, we're all here to learn, laugh, and support each other. 😉
 # 🍿 Lectures 
 - **Frontend: interacting with your canister using JavaScript (Identity, Agent, Actor).** <br/>
-In this lecture you'll learn how you can interact with your canisters from a webpage using JavaScript. This is extremely useful as this is the way most users interact with dApps. You'll learn about fundamental concepts such as Identity, Agent or Actor and how to use them.
+In this lecture, you'll learn how you can interact with your canisters from a webpage using JavaScript. This is extremely useful as this is the way most users interact with dApps. You'll learn about fundamental concepts such as Identity, Agent, or Actor and how to use them.
 
 - **Motoko: Custom type, variants, pattern matching & Result type.** <br/>
-In this you will learn how you can create your custom types giving you the ability to represent data in the way that best suits your program - how to handle variants that allow you to define different cases and combine them with pattern matching. Finally, you'll learn about the **Result** type in Motoko. Learn to create your own types, handle errors, match patterns and make your code more efficient, readable and maintainable.
+In this lecture, you'll learn how you can create your custom types giving you the ability to represent data in the way that best suits your program - how to handle variants that allow you to define different cases and combine them with pattern matching. Finally, you'll learn about the **Result** type in Motoko. Learn to create your own types, handle errors, match patterns and make your code more efficient, readable, and maintainable.
 
 - **Motoko: HashMap, TrieMap & CRUD.** <br/>
-In this lecture you'll learn how to use these powerful data structures and how to perform CRUD operations on canisters. CRUD stands for Create, Read, Update and Delete; those are basic operations that can be performed on a database, and are used to manage data in persistent storage. This will be crucial for working on the core project.
+In this lecture, you'll learn how to use these powerful data structures and how to perform CRUD operations on canisters. CRUD stands for Create, Read, Update and Delete; those are basic operations that can be performed on a database, and are used to manage data in persistent storage. This will be crucial for working on the core project.
 
 # 🧩 Motoko: Optional and Generic types & High order functions.
 ## 🫙 Optional type 
-In Motoko, like in many other programming languages, there is special value called "null" that reprsents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value which is null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of name as input and returns the first index such that the name is in the array at that index. If the name is not found , the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
+In Motoko, like in many other programming languages, there is a special value called "null" that represents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value: null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of name as input and returns the first index such that the name is in the array at that index. If the name is not found, the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
 
 If we write the following:
 ```
@@ -26,21 +26,21 @@ public func find_name(name : Text) : async Nat {
             return index;
         };
     };
-    return null; // We haven't find any match so we return null.
+    return null; // We haven't found any match so we return null.
 };
 ```
 This declaration is not valid - Motoko will throw the following error:
 ```
 type error [M0050], literal of type
   Null
-does not have expected type
+does not have the expected type
   Nat
 ```
 This is because "null" is not of type **Nat**. 
-In order to indicate to Motoko that a function may return either a **Nat** value or "null", we need a way to express that the function's return type can be one of two possibilities. This is because the specific return value of the function depends on the input that we don't know in advance, so we can't predict if the function will return a **Nat** or "null" until it is actually executed. <br/>
+To indicate that a function may return either a **Nat** value or "null", we need a way to express that the function's return type can be one of two possibilities. This is because the specific return value of the function depends on the input that we don't know in advance, so we can't predict if the function will return a **Nat** or "null" until it is executed. <br/>
 
 To express that we can use an **optional type**: "**?T**". 
-In our case we would use "**?Nat**". We can rewrite our code using this new notation:
+In our case, we would use "**?Nat**". We can rewrite our code using this new notation:
 ```
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async ?Nat {
@@ -49,7 +49,7 @@ public func find_name(name : Text) : async ?Nat {
             return index;
         };
     };
-    return null; // We haven't find any match so we return null.
+    return null; // We haven't found any match so we return null.
 };
 ```
 
@@ -71,11 +71,11 @@ public func handle_null_value(n : ?Nat) : async Text {
 };
 ```
 
-A final world on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perfom operations on optional values. 
+A final word on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perfom operations on optional values. 
 
 <p align="center"> <img src="./img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
-For instance,  you can use the "**Option.get**" function to unwraps an optional value with a default value - as in the following:
+For instance,  you can use the "**Option.get**" function to unwrap an optional value with a default value - as in the following:
 ```
 import Option "mo:base/Option";
 actor {
@@ -184,7 +184,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     
     };
     ```
-    > This code sample makes use of the 3 new concepts we've discussed today: Optional type, Generic type and Higher-order functions. 
+    > This code sample makes use of the 3 new concepts we've discussed today: Optional type, Generic type, and higher-order functions. 
     <details>
         <summary > 🤔 What do you think <strong> mystere([8,4,5,18,0,2,3]) </strong> will return ? </summary>
         It should return the first value that is equal to 10 in the array. Since there is none it will return <strong> null </strong>.
@@ -237,7 +237,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
           An array where all values have been increased by one (the order is not modified)  : <strong> [2, 3, 4, 5] </strong>.
     </details>
 
-Sometimes it's useful to give names to functions in order to reuse them later - you can use variables to store functions like you can do with any other type.
+Sometimes it's useful to give names to functions to reuse them later - you can use variables to store functions as you can do with any other type.
 
 ```
 let f = func (x : Nat) : Nat {
@@ -264,7 +264,7 @@ The **.ic0.app** indicates that you are reaching out to [boundary nodes]().
 Canisters are hosted in the nodes that participate in the IC consensus. However, those nodes are not directly accessible by end users. <br/>
 To protect the consensus nodes & improve performance there is a layer of **boundary nodes** which serve different useful purposes:
 
-- Translate the HTTP request of user's browser to canister call. This part is called the [HTTP Gateway](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway) protocol. When canisters sends their response the gateway will convert it back to an HTTP request.
+- Translate the HTTP request of user's browser to canister call. This part is called the [HTTP Gateway](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway) protocol. When canisters send their response the gateway will convert it back to an HTTP request.
 - Route the calls to the correct subnet running the canister. To properly route those calls the boundary nodes have to keep track of the entire configuration of the Internet Computer: 
     - List of subnets.
     - List of nodes and which subnet they belong to.
