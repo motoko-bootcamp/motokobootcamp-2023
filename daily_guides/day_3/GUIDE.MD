@@ -134,7 +134,7 @@ One approach would be to create a separate function for each possible type of ar
 
 A better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
 ```
-public func is_array_size_even<T>(array : [T]) : Bool {
+func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
     if(size % 2 == 0){
         return true;
