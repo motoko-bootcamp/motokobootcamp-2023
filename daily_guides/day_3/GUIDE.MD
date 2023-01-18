@@ -15,7 +15,7 @@ In this lecture, you'll learn how to use these powerful data structures and how 
 
 # 🧩 Motoko: Optional and Generic types & High order functions.
 ## 🫙 Optional type 
-In Motoko, like in many other programming languages, there is a special value called "null" that represents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value: null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of name as input and returns the first index such that the name is in the array at that index. If the name is not found, the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
+In Motoko, like in many other programming languages, there is a special value called "null" that represents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value: null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of names as input and returns the first index such that the name is in the array at that index. If the name is not found, the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
 
 If we write the following:
 ```
@@ -71,7 +71,7 @@ public func handle_null_value(n : ?Nat) : async Text {
 };
 ```
 
-A final word on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perfom operations on optional values. 
+A final word on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perform operations on optional values. 
 
 <p align="center"> <img src="./img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
@@ -158,9 +158,9 @@ let bool : Boolean = is_array_size_even<Nat>(array); // Replace T with the actua
 ```
 
 ## 🏋️ Higher Order Functions 
-So far, all the functions that we have written take "simple" arguments (**Nat**, **Text**, **Char**, ...) but functions can also take other functions as arguments! Such functions are called **Higher Order Functions** and they are  versatile and powerful functions that can adapt to a lot of situations. Let's unlock the power of **Higher Order Functions** in Motoko!
+So far, all the functions that we have written take "simple" arguments (**Nat**, **Text**, **Char**, ...) but functions can also take other functions as arguments! Such functions are called **Higher Order Functions** and they are versatile and powerful functions that can adapt to a lot of situations. Let's unlock the power of **Higher Order Functions** in Motoko!
 
-The [Array module](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array) in particular contains several higher order functions - that's why we will use it as a source of examples for this section. 
+The [Array module](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array) in particular contains several higher- order functions - that's why we will use it as a source of examples for this section. 
 
 
 - [Find](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-find): this function will look at each element in the array one by one, and use the "predicate" (a separate function or statement) to decide if it is true or false. When the predicate returns true for a particular element, the function will return that element. If none of the elements make the predicate return true, the function will return "null" (nothing/no value). 
@@ -190,7 +190,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
         It should return the first value that is equal to 10 in the array. Since there is none it will return <strong> null </strong>.
     </details>
 
-- Filter: this function will take an array, and for every element in that array, it will use the "predicate" (a separate function or statement) to decide if it is true or false. If the predicate returns true for a particular element, that element will be included in the new array, otherwise it will be skipped. The function will create a new array containing only the elements that passed the predicate test.
+- Filter: this function will take an array, and for every element in that array, it will use the "predicate" (a separate function or statement) to decide if it is true or false. If the predicate returns true for a particular element, that element will be included in the new array, otherwise, it will be skipped. The function will create a new array containing only the elements that passed the predicate test.
     <p align="center"> <img src="./img/array_filter.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
@@ -215,7 +215,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
        An array where only values below 10 are kept (the order is not modified)  : <strong> [1, 8, 2] </strong>.
     </details>
 
-- Map: this function will take an array and a function 'f' that maps the elements of array of type X to another type Y. This function will apply this function to each element in the original array and create a new array with the result of the function f applied to each element. The new array will have the same order as the original array.
+- Map: this function will take an array and a function 'f' that maps the elements of the array of type X to another type Y. This function will apply this function to each element in the original array and create a new array with the result of the function f applied to each element. The new array will have the same order as the original array.
     <p align="center"> <img src="./img/array_map.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
@@ -256,7 +256,7 @@ In this module, we will cover how canisters can be accessed through HTTP request
 **HTTP Outcalls**: Canisters can send requests and communicate with the Web 2.0 world. This can be used for various use cases, such as querying an exchange for token prices, getting the latest weather information, and sending notifications to users.
 
 ## 🌍 Accessing a canister through a browser 
-Whenever you [access a canister](https://wujxq-qqaaa-aaaaj-qazca-cai.raw.ic0.app/) through your browser there is a few steps involved. Let's go through all of them.<br/>
+Whenever you [access a canister](https://wujxq-qqaaa-aaaaj-qazca-cai.raw.ic0.app/) through your browser there are a few steps involved. Let's go through all of them.<br/>
 You will notice that URLs on the Internet Computer are of the following form: 
 **<CANISTER_ID>.ic0.app**
 The **.ic0.app** indicates that you are reaching out to [boundary nodes](). 
@@ -269,7 +269,7 @@ To protect the consensus nodes & improve performance there is a layer of **bound
     - List of subnets.
     - List of nodes and which subnet they belong to.
     - The canisters run by each subnet. 
-- Load balancing among the subnet's replica nodes (i.e if a replica is lacking behind and has already a lot of work on his plate - boundary nodes will send the request to another replica).
+- Load balancing among the subnet's replica nodes (i.e if a replica is lacking behind and has already a lot of work on its plate - boundary nodes will send the request to another replica).
 - Protect subnets from DDoS attacks.
 
 <i> Currently, boundary nodes are run by the DFINITY Foundation. However, the objective (as part of the roadmap) is to have anyone able to set up and run a boundary nodes. This will make interaction with the Internet Computer more reactive for end users and this will make the platform more robust to censorship. You can read more in [the dedicated topic](https://forum.dfinity.org/t/boundary-node-roadmap/15562) if you are interested. </i>
