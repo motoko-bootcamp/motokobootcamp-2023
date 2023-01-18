@@ -527,7 +527,7 @@ segundo_máximo(Array: [Int]) -> Int;
 ```
 2. En su archivo llamado `utils.mo`: cree una función llamada `remove_even` que tome un Array [Nat] y devuelva una nueva Array con solo los números impares de la Array original.
 ```
-remove_event(Array: [Nat]) -> [Nat];
+remove_even(Array: [Nat]) -> [Nat];
 ```
 3. En su archivo llamado `utils.mo`: escriba una función `drop` <T> que tome 2 parámetros: un Array [T] y un **Nat** n. Esta función caerá los n primeros elementos del Array y devuelve el resto.
 > ⛔️ No utilices bucle.

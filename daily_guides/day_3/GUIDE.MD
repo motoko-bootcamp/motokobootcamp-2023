@@ -527,7 +527,7 @@ second_maximum(array : [Int]) ->  Int;
 ```
 2. In your file called `utils.mo`: create a function called `remove_even` that takes an array [Nat] and returns a new array with only the odd numbers from the original array.
 ```
-remove_event(array : [Nat]) -> [Nat];
+remove_even(array : [Nat]) -> [Nat];
 ```
 3. In your file called `utils.mo`:  write a function `drop` <T> that takes 2 parameters: an array [T] and a **Nat** n. This function will drop the n first elements of the array and returns the remainder. 
 > ⛔️ Do not use a loop. 
