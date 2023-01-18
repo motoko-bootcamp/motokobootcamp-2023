@@ -160,7 +160,7 @@ let bool : Boolean = is_array_size_even<Nat>(array); // Replace T with the actua
 ## 🏋️ Higher Order Functions 
 So far, all the functions that we have written take "simple" arguments (**Nat**, **Text**, **Char**, ...) but functions can also take other functions as arguments! Such functions are called **Higher Order Functions** and they are versatile and powerful functions that can adapt to a lot of situations. Let's unlock the power of **Higher Order Functions** in Motoko!
 
-The [Array module](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array) in particular contains several higher- order functions - that's why we will use it as a source of examples for this section. 
+The [Array module](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array) in particular contains several higher-order functions - that's why we will use it as a source of examples for this section. 
 
 
 - [Find](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-find): this function will look at each element in the array one by one, and use the "predicate" (a separate function or statement) to decide if it is true or false. When the predicate returns true for a particular element, the function will return that element. If none of the elements make the predicate return true, the function will return "null" (nothing/no value). 
@@ -264,7 +264,7 @@ The **.ic0.app** indicates that you are reaching out to [boundary nodes]().
 Canisters are hosted in the nodes that participate in the IC consensus. However, those nodes are not directly accessible by end users. <br/>
 To protect the consensus nodes & improve performance there is a layer of **boundary nodes** which serve different useful purposes:
 
-- Translate the HTTP request of user's browser to canister call. This part is called the [HTTP Gateway](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway) protocol. When canisters send their response the gateway will convert it back to an HTTP request.
+- Translate the HTTP request of the user's browser to canister call. This part is called the [HTTP Gateway](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway) protocol. When canisters send their response the gateway will convert it back to an HTTP request.
 - Route the calls to the correct subnet running the canister. To properly route those calls the boundary nodes have to keep track of the entire configuration of the Internet Computer: 
     - List of subnets.
     - List of nodes and which subnet they belong to.
@@ -277,12 +277,12 @@ To protect the consensus nodes & improve performance there is a layer of **bound
 <p align="center"> <img src="./img/http_gateway.png" width="800px" style="border: 2px solid black;"> </p>
 
 ## 📦 Asset canister
-To serve web content on the Internet Computer, a canister should have a method that can handle a HTTP request, which includes the url, http method, and headers, and produce a HTTP response, consisting of a status, headers, and body. There are two ways to go about that:
+To serve web content on the Internet Computer, a canister should have a method that can handle an http request, which includes the URL, http method, and headers, and produce an HTTP response, consisting of a status, headers, and body. There are two ways to go about that:
 
 - Implement the http_request method and all associated logic yourself (in Motoko). This is what will be doing for our **webpage** canister.
-- Use the provided **asset** canister: this is a special canister which code as been already implement by DFINITY. You need to specify the type of this canister in dfx.json & add the source folder of your web app. Once the asset canister is deployed on the Internet Computer the website can be accessed at http://<canister id>.ic0.app and http://<canister id>.raw.ic0.app. This is what we will use for our **interface** canister. The frontend canister that is shipped when you deploy a project with `dfx new <project>`is in fact an asset canister (as you can confirm by looking at `dfx.json`).
+- Use the provided **asset** canister: this is a special canister whose code has been already implemented by DFINITY. You need to specify the type of this canister in dfx.json & add the source folder of your web app. Once the asset canister is deployed on the Internet Computer the website can be accessed at http://<canister id>.ic0.app and http://<canister id>.raw.ic0.app. This is what we will use for our **interface** canister. The frontend canister that is shipped when you deploy a project with `dfx new <project>` is an asset canister (as you can confirm by looking at `dfx.json`).
 
-You can access [the source code for this canister written in Rust](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) under the [DFINITY organisation](https://github.com/dfinity).  
+You can access [the source code for this canister written in Rust](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) under the [DFINITY organization](https://github.com/dfinity).  
 
 ## 🔑 ic0.app vs raw.ic0.app
 As we said earlier there are two ways to access a canister:
@@ -291,12 +291,12 @@ As we said earlier there are two ways to access a canister:
 
 What is the difference?
 
-The **raw** URL will simply returns the request as it is so serves the asset files (HTML, CSS, Javascript).
-On the other hand when hitting ic0.app the boundary node will first return a **service worker**. This is what is loading whenever you see this page:
+The **raw** URL will simply return the request as it is so serves the asset files (HTML, CSS, Javascript).
+On the other hand, when hitting ic0.app the boundary node will first return a **service worker**. This is what is loading whenever you see this page:
 
 <p align="center"> <img src="./img/service_worker.png" width="800px" style="border: 2px solid black;"> </p>
 
-Once the [service worker](https://www.npmjs.com/package/@dfinity/service-worker) is installed the request is handled by the service worker. The huge advantage of the service worker is that it will verify the content that is served by the node. In that case, the content of the assets served is signed directly by the canisgter (under the public key on the IC) - the service worker knows the public key and is responsible for verifying that received content matches the signature. 
+Once the [service worker](https://www.npmjs.com/package/@dfinity/service-worker) is installed the request is handled by the service worker. The huge advantage of the service worker is that it will verify the content that is served by the node. In that case, the content of the assets served is signed directly by the canister (under the public key on the IC) - the service worker knows the public key and is responsible for verifying the received content matches the signature. 
 
 >  Accessing a webpage should be fast, so we use query calls to handle that. However, query calls do not go through consensus and cannot create signatures. To solve this issue, we use certified variables. This means that the content must be certified before the call happens, which can cause problems for some content. If the certification is not possible and you are accessing under ic0.app, you may encounter an error page.
 
@@ -305,7 +305,7 @@ Once the [service worker](https://www.npmjs.com/package/@dfinity/service-worker)
 <p align="center" > In that case you should access under raw.ic0.app to avoid the issue.</p>
 
 
-> One last thing: the service worker received when accessing **ic0.app** could in theory be faked or manipulated to certify invalid responses. Most users won't go through the trouble of veryfing the service worker that is served to them. The way to solve this would be to have the public key of the Internet Computer directly shipped into the hardware or the browser. **That would be pretty dope!**  
+> One last thing: the service worker received when accessing **ic0.app** could in theory be faked or manipulated to certify invalid responses. Most users won't go through the trouble of verifying the service worker that is served to them. The way to solve this would be to have the public key of the Internet Computer directly shipped into the hardware or the browser. **That would be pretty dope!**  
 
 ## 🤙 Contacting the canister.
 Once the boundary node has received the request. It will encode it into Candid and automatically call the``` http_request``` method of the canister.
@@ -313,7 +313,7 @@ reachable by browsers, you need to implement an ``http_request``method as part o
 
 <p align="center"> <img src="./img/http_request_public_interface.png" width="600px" style="border: 2px solid black;"> </p>
 
-<p align="center" > This is the minimum code needed in order to returns a simple page that prints <b>Hello world</b>.</p>
+<p align="center" > This is the minimum code needed to return a simple page that prints <b>Hello world</b>.</p>
 
 <p align="center"> <img src="./img/hello_world.png" width="400px" style="border: 2px solid black;"> </p>
 
@@ -323,7 +323,7 @@ reachable by browsers, you need to implement an ``http_request``method as part o
 You may have noticed a few types in the Motoko code shown earlier. 
 ```HttpRequest```and ```HttpResponse```. Those types have been defined in an external file called ``http.mo``. 
 
->It is a recommended practice to create custom types and their associated methods in a separate file for organization, clarity and reusability.
+>It is a recommended practice to create custom types and their associated methods in a separate file for organization, clarity, and reusability.
 
 Let's go through this file together. Here is the content:
 ```
@@ -382,7 +382,7 @@ This indicates that this file will not be used to declare an actor with a public
 
 > The concept of a 'public' field in a module changes its meaning from what we've been used to.  public method or variable in a module can be accessed by importing the file into the main module, main.mo, but it does not mean that it can directly be accessed by other canisters or users.
 
-We can also add a name (it his possible to have multiple modules with different names in the same file - though we will not do it to keep things clear and simple).
+We can also add a name (it is possible to have multiple modules with different names in the same file - though we will not do it to keep things clear and simple).
 
 ```
 module Http {
@@ -422,7 +422,7 @@ The corresponding object in Motoko would be something like this:
 ```
 let request : HttpRequest = {
     body = null;
-    headers = [("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0"), (""), ()]
+    headers = [("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0")];
     method = "GET";
     url="/";
 }
@@ -441,11 +441,11 @@ public type HttpResponse = {
     streaming_strategy: ?StreamingStrategy;
 };
 ```
-- The [status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) is a three-digit number returned to indicates the outcome of the request and the status of response. The first digit defines the category of the response:
-    - 2xx indicates a succesful response.
-    - 4xx indicates an client error.
-    - 5xx indicates an server error.
-    -  few commons status code are:
+- The [status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) is a three-digits number returned to indicate the outcome of the request and the status of the response. The first digit defines the category of the response:
+    - 2xx indicates a successful response.
+    - 4xx indicates a client error.
+    - 5xx indicates a server error.
+    -  few commons status codes are:
         - 200: OK.
         - 404: Not found.
         - 500: Internal Server Error.
@@ -456,7 +456,7 @@ public type HttpResponse = {
 - The body is encoded as [UTF-8](https://www.freecodecamp.org/news/what-is-utf-8-character-encoding/). You can encode/decode **Text** to **Blob** in Motoko using the [Text module](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Text) 
     <p align="center"> <img src="./img/utf8_encode_decode.png" width="800px" style="border: 2px solid black;"> </p>
 
-- The streaming streaming is a field for handling HTTP responses in a streaming manner, with the ability to callback for more data using the defined callback function. It is defined as follows:
+- Streaming strategy is a field for handling HTTP responses in a streaming manner, with the ability to callback for more data using the defined callback function. It is defined as follows:
     ```
     public type StreamingStrategy = {
             #Callback: {
@@ -485,7 +485,7 @@ Some explanations:
 This is extremely useful because some pages or files are too large to be processed into a single message, and therefore, the use of StreamingStrategy is required.
 
 ## 👨‍🎤 SEO on the Internet Computer
-Due to early versions of the service worker there was issue with [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) for dApps running 100% on chain. <br> In fact, the crawlers were unable to load content hosted on Internet Computer due to a failure when loading the service worker. This made preview in search engine unavaible.
+Due to early versions of the service worker, there was an issue with [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) for dApps running 100% on chain. <br> In fact, the crawlers were unable to load content hosted on Internet Computer due to a failure when loading the service worker. This made previews in search engines unavailable.
 
 <p align="center"> <img src="./img/preview_error.png" width="600px" style="border: 2px solid black;"> </p>
 <p align="center"> Instead of seeing the preview of the content you would just see the loading of the service worker - boring...</p>
@@ -514,7 +514,7 @@ actor {
 
 # Coding challenges 🧑‍💻
 
-> For the challenges 2-5 you will have to change the habitual structure of your repository & instead of having a unique `challenge.mo` file you'll have three files: `utils.mo`, `animal.mo` & `main.mo`. <br/>
+> For the challenges of today you will have to change the habitual structure of your repository & instead of having a unique `challenge.mo` file you'll have three files: `utils.mo`, `animal.mo` & `main.mo`. <br/>
 >  You can check the corresponding structure in the [example repository](https://github.com/sebthuillier/motokobootcamp2023).
 
 1. In your file called `utils.mo`: create a function called `second_maximum` that takes an array [Int] of integers and returns the second largest number in the array.
@@ -532,9 +532,9 @@ drop<T> : (xs : [T], n : Nat) -> [T]
 ```
 4. In your file called `book.mo` create a custom type with at least 2 properties (title of type **Text**, pages of type **Nat**), import this type in your `main.mo` and create a variable that will store a book.
 
-5. In your file called `book.mo` create a function called `create_book` that takes two parameters : a title of type **Text**, and number of pages of type **Nat** and returns a book. This function will create a new book based on the parameters passed and then read it before returning it. 
+5. In your file called `book.mo` create a function called `create_book` that takes two parameters: a title of type **Text**, and a number of pages of type **Nat** and returns a book. This function will create a new book based on the parameters passed and then read it before returning it. 
 
-6. In `main.mo` import the type **List** from the Base Library and create a list that stores book. 
+6. In `main.mo` import the type **List** from the Base Library and create a list that stores books. 
 
 7. In `main.mo` create a function called `add_book` that takes a book as parameter and returns nothing this function should add this book to your list. Then create a second function called `get_books` that takes no parameter but returns an **Array** that contains all books stored in the list.
 
