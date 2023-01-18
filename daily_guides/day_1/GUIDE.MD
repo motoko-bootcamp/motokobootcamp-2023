@@ -435,7 +435,7 @@ actor {
 ```
 multiply(n : Nat, m : Nat) -> async Nat
 ```
-2. Write a function **volume** that takes a natural number n and returns the volumte of a cube with side length n.
+2. Write a function **volume** that takes a natural number n and returns the volume of a cube with side length n.
 ```
 volume(n : Nat) -> async Nat
 ```
