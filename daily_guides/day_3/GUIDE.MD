@@ -1,21 +1,21 @@
 # Day 3 🐥
-Welcome to Day 3 of the Motoko Bootcamp! <br/> We hope you're feeling like a coding ninja ready to take on even more advanced topics. Today, we'll be diving into HTTP requests in Motoko and learning how to interact with canisters from a frontend using the JavaScript Agent. You'll also learn about pattern matching and variants in Motoko, which will give you the power to control your code!.
+Welcome to Day 3 of the Motoko Bootcamp! <br/> We hope you're feeling like a coding ninja ready to take on even more advanced topics. Today, we'll be diving into HTTP requests in Motoko and learning how to interact with canisters from a frontend using the JavaScript Agent. You'll also learn about pattern matching and variants in Motoko, which will give you the power to control your code! <br/>
 In addition, we'll also be introducing data structures such as HashMap/TrieMap and CRUD operations. These data structures will be really useful when working on the [core project](../../core_project/PROJECT.md). <br/>
 
 Don't hesitate to ask for help from your teammates or mentors if you need it. Remember, we're all here to learn, laugh, and support each other. 😉
 # 🍿 Lectures 
 - **Frontend: interacting with your canister using JavaScript (Identity, Agent, Actor).** <br/>
-In this lecture you'll learn how you can interact with your canisters from a webpage using JavaScript. This is extremly useful as this is the way most users interact with dApps. You'll learn about fundamental concepts such as Identity, Agent or Actor and how to use them.
+In this lecture you'll learn how you can interact with your canisters from a webpage using JavaScript. This is extremely useful as this is the way most users interact with dApps. You'll learn about fundamental concepts such as Identity, Agent or Actor and how to use them.
 
 - **Motoko: Custom type, variants, pattern matching & Result type.** <br/>
-In this you will learn how you can create your custom types giving you the ability to represent data in the way that best suits your program - how to handle variants which allow you to define different cases and combine them with pattern matching. Finally, you'll learn about the **Result** type in Motoko. Learn to create your own types, handle errors, match patterns and make your code more efficient, readable and maintainable.
+In this you will learn how you can create your custom types giving you the ability to represent data in the way that best suits your program - how to handle variants that allow you to define different cases and combine them with pattern matching. Finally, you'll learn about the **Result** type in Motoko. Learn to create your own types, handle errors, match patterns and make your code more efficient, readable and maintainable.
 
 - **Motoko: HashMap, TrieMap & CRUD.** <br/>
-In this lecture you'll learn how to use these powerful data structures and how to perform CRUD operations on canisters. CRUD stands for Create, Read, Update and Delete; those are basic operations that can be performed on a database, and are used to manage data in a persistent storage. This will be crucial for working on the core project.
+In this lecture you'll learn how to use these powerful data structures and how to perform CRUD operations on canisters. CRUD stands for Create, Read, Update and Delete; those are basic operations that can be performed on a database, and are used to manage data in persistent storage. This will be crucial for working on the core project.
 
 # 🧩 Motoko: Optional and Generic types & High order functions.
 ## 🫙 Optional type 
-In Motoko, like in many other programming languages, there is special value called "null" that reprsents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value which is null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of name as input and returns a the first index such that the name is in the array at that index. If the name is not found , the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
+In Motoko, like in many other programming languages, there is special value called "null" that reprsents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value which is null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of name as input and returns the first index such that the name is in the array at that index. If the name is not found , the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
 
 If we write the following:
 ```
@@ -71,7 +71,7 @@ public func handle_null_value(n : ?Nat) : async Text {
 };
 ```
 
- final world on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perfom operations on optional values. 
+A final world on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perfom operations on optional values. 
 
 <p align="center"> <img src="./img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
@@ -87,7 +87,7 @@ actor {
 }
 ```
 
-This function will take a **?Nat** as input and returns a **Nat**. If you provide a **Nat** as input it will returns the same - but if you provide "**null**" it will returns the default value - which is set to 0.
+This function will take a **?Nat** as input and return a **Nat**. If you provide a **Nat** as input it will return the same - but if you provide "**null**" it will return the default value - which is set to 0.
 
 For instance, assuming that you've deployed the actor on your local replica (and called the canister "**example**"):
 ```
@@ -108,7 +108,7 @@ Will return:
 ## 👤 Generic Type
 In the previous section, we briefly introduced the concept of "**generic type**" with the notation "**?T**". Now, let's dive deeper and explore the exciting world of generics.
 
- generic type, usually written as "T", allows you to write functions and code that can adapt to different types. When we talk about "**T**" in programming, it refers to "whatever type you want".
+A generic type, usually written as "T", allows you to write functions and code that can adapt to different types. When we talk about "**T**" in programming, it refers to "whatever type you want".
 This means that you can create a single function or class that can handle multiple types of inputs or data, without having to write separate code for each type.
 
 Let's imagine we have a task at hand - to determine if the size of an array is even or not. We're going to write a function called "**is_array_size_even**" that takes an array as an input and returns a Boolean value indicating whether the size of that array is even or not.
@@ -128,7 +128,7 @@ This function works as intended, but it's limited to arrays filled with **Nat**.
 
 One approach would be to create a separate function for each possible type of array, like "**_is_array_size_even_nat**", "**_is_array_size_even_text**", "**_is_array_size_even_int**". But as you can imagine, this quickly becomes hard to manage and maintain.
 
- better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
+A better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
 ```
 public func is_array_size_even<T>(array : [T]) : async Bool {
     let size = array.size();
