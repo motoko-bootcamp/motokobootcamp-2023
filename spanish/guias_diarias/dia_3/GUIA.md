@@ -293,11 +293,11 @@ Como dijimos anteriormente, hay dos formas de acceder a un bote:
 ¿Cuál es la diferencia?
 
 La URL **sin procesar** simplemente devolverá la solicitud tal como está para servir los archivos de activos (HTML, CSS, Javascript).
-Por otro lado, al presionar ic0.app, el nodo límite primero devolverá un **trabajador de servicio**. Esto es lo que se carga cada vez que ve esta página:
+Por otro lado, al presionar ic0.app, el nodo límite primero devolverá un **service worker**. Esto es lo que se carga cada vez que ve esta página:
 
 <p align="center"> <img src="../../../daily_guides/day_3/img/service_worker.png" width="800px" style="border: 2px solid black;"> </p>
 
-Una vez que el [trabajador de servicio](https://www.npmjs.com/package/@dfinity/service-worker) está instalado, el trabajador de servicio maneja la solicitud. La gran ventaja del trabajador de servicio es que verificará el contenido que sirve el nodo. En ese caso, el canisgter firma directamente el contenido de los activos servidos (bajo la clave pública en el IC): el trabajador del servicio conoce la clave pública y es responsable de verificar que el contenido recibido coincida con la firma.
+Una vez que el [service worker](https://www.npmjs.com/package/@dfinity/service-worker) está instalado, el service worker maneja la solicitud. La gran ventaja del service worker es que verificará el contenido que sirve el nodo. En ese caso, el canisgter firma directamente el contenido de los activos servidos (bajo la clave pública en el IC): el service worker conoce la clave pública y es responsable de verificar que el contenido recibido coincida con la firma.
 
 > Acceder a una página web debe ser rápido, por lo que usamos llamadas de consulta para manejar eso. Sin embargo, las llamadas de consulta no pasan por consenso y no pueden crear firmas. Para resolver este problema, utilizamos variables certificadas. Esto significa que el contenido debe estar certificado antes de que ocurra la llamada, lo que puede causar problemas para algunos contenidos. Si la certificación no es posible y está accediendo bajo ic0.app, es posible que encuentre una página de error.
 
@@ -306,7 +306,7 @@ Una vez que el [trabajador de servicio](https://www.npmjs.com/package/@dfinity/s
 <p align="center" > En ese caso, debe acceder a raw.ic0.app para evitar el problema.</p>
 
 
-> Una última cosa: el trabajador del servicio recibido al acceder a **ic0.app** podría, en teoría, ser falsificado o manipulado para certificar respuestas no válidas. La mayoría de los usuarios no se tomarán la molestia de verificar el trabajador de servicio que se les brinda. La forma de resolver esto sería enviar la clave pública de la computadora de Internet directamente al hardware o al navegador. **¡Eso sería genial!**
+> Una última cosa: el service worker recibido al acceder a **ic0.app** podría, en teoría, ser falsificado o manipulado para certificar respuestas no válidas. La mayoría de los usuarios no se tomarán la molestia de verificar el service worker que se les brinda. La forma de resolver esto sería enviar la clave pública de la computadora de Internet directamente al hardware o al navegador. **¡Eso sería genial!**
 
 ## 🤙 Contactando con el bote.
 Una vez que el nodo límite ha recibido la solicitud. Lo codificará en Candid y llamará automáticamente al método ``` http_request``` del recipiente.
@@ -489,10 +489,10 @@ Algunas explicaciones:
 Esto es extremadamente útil porque algunas páginas o archivos son demasiado grandes para procesarlos en un solo mensaje y, por lo tanto, se requiere el uso de StreamingStrategy.
 
 ## 👨‍🎤 SEO en la computadora de Internet
-Debido a las primeras versiones del trabajador de servicio, hubo un problema con [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) para dApps que se ejecutan al 100% en cadena. <br> De hecho, los rastreadores no pudieron cargar el contenido alojado en Internet Computer debido a una falla al cargar el service worker. Esto hizo que la vista previa en el motor de búsqueda no estuviera disponible.
+Debido a las primeras versiones del service worker, hubo un problema con [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) para dApps que se ejecutan al 100% en cadena. <br> De hecho, los rastreadores no pudieron cargar el contenido alojado en Internet Computer debido a una falla al cargar el service worker. Esto hizo que la vista previa en el motor de búsqueda no estuviera disponible.
 
 <p align="center"> <img src="../../../daily_guides/day_3/img/preview_error.png" width="600px" style="border: 2px solid black;"> </p>
-<p align="center"> En lugar de ver la vista previa del contenido, solo vería la carga del trabajador del servicio: aburrido...</p>
+<p align="center"> En lugar de ver la vista previa del contenido, solo vería la carga del service worker: aburrido...</p>
 
 Las nuevas versiones de los nodos de límite han solucionado este problema y las dApps que se ejecutan al 100 % en la cadena se pueden indexar como sitios web tradicionales.
 
@@ -543,7 +543,7 @@ drop<T> : (xs : [T], n : Nat) -> [T]
 7. En `main.mo` cree una función llamada `add_book` que tome un libro como parámetro y no devuelva nada. Esta función debería agregar este libro a su lista. Luego cree una segunda función llamada `get_books` que no tome ningún parámetro pero devuelva un **Array** que contenga todos los libros almacenados en la lista.
 
 # Recursos y enlaces útiles 🔗
-- [Trabajador de servicio personalizado](https://internetcomputer.org/docs/current/developer-docs/deploy/custom-domain#creating-the-custom-service-worker): un tutorial sobre cómo configurar su propio servicio trabajador, que puede ser útil si desea tener una buena URL.
+- [service worker personalizado](https://internetcomputer.org/docs/current/developer-docs/deploy/custom-domain#creating-the-custom-service-worker): un tutorial sobre cómo configurar su propio servicio trabajador, que puede ser útil si desea tener una buena URL.
 - [Los contratos inteligentes sirven a la Web](https://internetcomputer.org/how-it-works/smart-contracts-serve-the-web/): más información y recursos sobre cómo los recipientes sirven a los navegadores web.
 - [SEO en IC](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33): consulte este tutorial para obtener sugerencias y consejos sobre cómo configurar correctamente su sitio web en el IC para obtener la máxima visibilidad y accesibilidad.
 - [Variables certificadas](https://www.youtube.com/watch?v=3mZHEfICi_U): un video que explica todo lo que necesita saber sobre las variables certificadas, por grandes cerebros en DFINITY.
