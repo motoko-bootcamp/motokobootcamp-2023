@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootcamp Dao</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      /**
+       * @dfinity/agent requires this. Can be removed once it's fixed
+       */
+      import { Buffer } from "buffer"
+
+      window.global = window
+      window.Buffer = Buffer
+    </script>
+    <script type="module" src="/interface/main.js"></script>
+  </body>
+</html>

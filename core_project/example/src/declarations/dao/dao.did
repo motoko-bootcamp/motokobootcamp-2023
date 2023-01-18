@@ -1,0 +1,39 @@
+type Subaccount = vec nat8;
+type Proposal = 
+ record {
+   creator: Account;
+   payload: text;
+   status: variant {
+             Open;
+             Passed;
+             Rejected;
+           };
+   timestamp: int;
+   votes: record {
+            nat;
+            nat;
+          };
+ };
+type Account = 
+ record {
+   owner: principal;
+   subaccount: opt Subaccount;
+ };
+service : {
+  get_all_proposals: () -> (vec record {
+                                  int;
+                                  Proposal;
+                                }) query;
+  get_proposal: (int) -> (opt Proposal) query;
+  submit_proposal: (text) -> (variant {
+                                Err: text;
+                                Ok: Proposal;
+                              });
+  vote: (int, bool) -> (variant {
+                          Err: text;
+                          Ok: record {
+                                nat;
+                                nat;
+                              };
+                        });
+}

@@ -1,0 +1,23 @@
+{
+  "name": "src",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@dfinity/agent": "^0.15.1",
+    "@dfinity/principal": "^0.15.1",
+    "flowbite-svelte": "^0.29.10",
+    "svelte-heros": "^2.4.3"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "next",
+    "buffer": "^6.0.3",
+    "svelte": "^3.42.5",
+    "svelte-preprocess": "^4.10.7",
+    "svelte-sidebar-menu": "^0.9.12",
+    "vite": "^2.9.13"
+  }
+}
