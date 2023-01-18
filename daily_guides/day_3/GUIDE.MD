@@ -21,10 +21,12 @@ If we write the following:
 ```
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async Nat {
-    for((language, index) in names.vals()){
-        if (x == name){
+    var index : Nat = 0;
+    for(language in names.vals()){
+        if (language == name){
             return index;
         };
+        index +=1;
     };
     return null; // We haven't found any match so we return null.
 };
@@ -44,10 +46,12 @@ In our case, we would use "**?Nat**". We can rewrite our code using this new not
 ```
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async ?Nat {
-    for((language, index) in names.vals()){
-        if (x == name){
-            return index;
+    var index : Nat = 0;
+    for(language in names.vals()){
+        if (language == name){
+            return ?index;
         };
+        index +=1;
     };
     return null; // We haven't found any match so we return null.
 };
@@ -130,7 +134,7 @@ One approach would be to create a separate function for each possible type of ar
 
 A better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
 ```
-public func is_array_size_even<T>(array : [T]) : async Bool {
+public func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
     if(size % 2 == 0){
         return true;
