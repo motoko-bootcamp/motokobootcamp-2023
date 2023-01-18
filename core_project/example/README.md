@@ -7,7 +7,7 @@ You can use this repository as a starter point for your the [core project](https
 <p align="center">To see the navigation bar hover on the left.</p>
 
 A few more things:
-- To build the core project you should complete the code that is missing inside the [src](./src/) folder.
+- To build the core project you should complete the code that of the [dao]() canister & [webpage]() canister.
 - Using this skeleton is NOT a requirement. This repository is only meant to help you get started. 
 - The core project has to be submitted before the deadline - more infos on #submit.
 - [Plug wallet is used] and we recommend to use it for this core project to make your life easier: mainly because **Principal** for users will be the same between canisters. THIS IS NOT THE CASE WITH INTERNET IDENTITY WHICH WILL MAKE YOUR LIFE WAY HARDER.
@@ -21,9 +21,6 @@ Install the necessary packages.
 npm run install
 ```
 Generate the interfaces
-```
-dfx generate
-```
 Deploy on the IC 
 ```
 dfx deploy --network ic
