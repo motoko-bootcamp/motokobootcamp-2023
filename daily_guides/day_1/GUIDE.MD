@@ -10,7 +10,7 @@ Today is an introduction to Motoko: there is a lot to cover! Don't stress if you
 - <b> Event: Motoko Bootcamp Kick-off. </b> <br/>
   Get ready to kick off your Motoko Bootcamp journey with our exciting kick-off event! Join us as we dive into organizing your week, sharing valuable advice, and hearing inspiring stories from past students who have succeeded in the program.
 - <b> Lecture: Overview of a project: files, documentations & packages. </b> <br/>
-  Next, we'll delve into the technical side of things with a lecture on the overview of a project, including all the important details about files, documentations, and packages. We'll also explain the sample deployed with dfx and show you how to navigate the structure and understand the utility of each file.
+  Next, we'll delve into the technical side of things with a lecture on the overview of a project, including all the important details about files, documentation, and packages. We'll also explain the sample deployed with dfx and show you how to navigate the structure and understand the utility of each file.
 - <b> Lecture: Motoko - variables, types, functions & loops. </b>  <br/> As we move forward, we'll dive into the heart of the Motoko language with lectures on variables, types, functions, and loops. These are the essential concepts you'll need to master during the week, and our expert instructors will guide you every step of the way.
 - <b> Lecture: How to use dfx to deploy canisters? </b> <br/>
 Finally, we'll show you how to make the most of dfx by providing an in-depth lecture on how to use it to deploy and manage your canisters. 
@@ -21,23 +21,23 @@ Be sure to consult [the calendar](https://calendar.google.com/calendar/u/0/embed
 ## <a id="what-is-motoko"> 👻 What is Motoko? </a>
 <p align="center"> <img src="./img/motoko_banner.png" width="600px" style="border: 2px solid black;"> </p>
 
-The Internet Computer is a platform that hosts a large number of applications, all of which operate smoothly within special containers called "canisters". <br/> The [DFINITY Foundation](https://dfinity.org/) has introduced a new language called Motoko, which is a programming language specifically designed for creating decentralized applications (dApps) on the Internet Computer. <br/> Canisters on the platform run using WebAssembly modules. WebAssembly is like a virtual machine that helps run special instructions, called bytecode, on the Internet Computer. It's great for building efficient apps on the Internet because it's faster, more efficient, and works on different devices. Since Motoko can directly convert its code into [WebAssembly](https://webassembly.org/), it is a incredible language for building on the Internet Computer.
+The Internet Computer is a platform that hosts a large number of applications, all of which operate smoothly within special containers called "canisters". <br/> The [DFINITY Foundation](https://dfinity.org/) has introduced a new language called Motoko, which is a programming language specifically designed for creating decentralized applications (dApps) on the Internet Computer. <br/> Canisters on the platform run using WebAssembly modules. WebAssembly is like a virtual machine that helps run special instructions, called bytecode, on the Internet Computer. It's great for building efficient apps on the Internet because it's faster, more efficient, and works on different devices. Since Motoko can directly convert its code into [WebAssembly](https://webassembly.org/), it is an incredible language for building on the Internet Computer.
 
-It's worth noting that WebAssembly, or "WASM" for short, was co-designed by [Andreas Rossberg](https://github.com/rossberg), who joined the DFINITY Foundation early in 2017 to work on its canister smart contract execution environment, and is also the original designer of the Motoko language. The standard is maintained by the [World Wide Web Consortium](https://www.w3.org/). 
+It's worth noting that WebAssembly, or "WASM" for short, was co-designed by [Andreas Rossberg](https://github.com/rossberg), who joined the DFINITY Foundation early in 2017 to work on its canister smart contract execution environment and is also the original designer of the Motoko language. The standard is maintained by the [World Wide Web Consortium](https://www.w3.org/). 
 
 A **Motoko file** is a file with the extension .mo 
 
 <p align="center"> <img src="./img/mo_extension.png" width="300px" style="border: 2px solid black;"> </p>
 
 ---
-<i> Motoko has a really cool logo that has already been intensively used and modified in the community. 
+<i> Motoko has a cool logo that has already been intensively used and modified in the community. 
 So not only will you be able to build cutting-edge decentralized applications with Motoko, but you'll also have the coolest logo in the game. Don't believe us? Just check out the [Motoko NFT market](https://entrepot.app/marketplace/motoko) and see for yourself. </i>
 
 <p align="center"> <img src="./img/motoko_variations.png" width="400px" style="border: 2px solid black;"> </p>
 <p align="center"> Who will be the next Motoko in town?</p>
 
 ## <a id="what-is-a-canister"> 🥫 What is a canister? </a>
-The concept of **canisters** is fundamental to understand how dApps on the Internet Computer are developed. 
+The concept of **canisters** is fundamental to understanding how dApps on the Internet Computer are developed. 
 <p align="center"> <img src="./img/canister_overview.png" width="800px" style="border: 2px solid black;"> </p>
 <p align="center"> Overview of a canister.</p>
 
@@ -46,9 +46,9 @@ A canister is composed of:
 - A **WebAssembly module** which is a piece of compiled code from languages such as Rust or Motoko. This is the code that is installed in the canister and is ultimately running. 
 - A **WebAssembly memory** - also called memory pages. This is where the state of the canister is stored and files are stored (photos, videos, tokens...). Code runs by the WebAssembly module will modify the memory.
 
-<i> A WebAssembly module can be replaced by a new one while keeping the memory intact - this is what enables canisters to be upgraded without loosing their data. </i>
+<i> A WebAssembly module can be replaced by a new one while keeping the memory intact - this is what enables canisters to be upgraded without losing their data. </i>
 
-Users will interact with canisters directly by sending and receiving messages (which corresponds to public function on the canister as we'll see later). 
+Users will interact with canisters directly by sending and receiving messages (which corresponds to the public function on the canister as we'll see later). 
 They are two types of calls:
 
 - Update call: This type of call is used when a user wants to modify the state of a canister (such as posting a message on social media, sending a token, or updating their profile). To ensure the integrity of the Internet Computer, these calls must be processed through consensus and by all nodes, which results in a delay of around 1-2 seconds.
@@ -80,14 +80,14 @@ This nomenclature comes from the [Actor model](https://en.wikipedia.org/wiki/Act
 
 Since canisters have been implemented to follow the actor model - you won't be surprised to learn that canisters:
 
-- Have private state (memory) & can run computations.
+- Have a private state (memory) & can run computations.
 - Receive messages from users or other canisters.
 - Can send messages to users or other canisters.
 - Can create other canisters.
 
 ## <a id="variables"> 📦 Variables </a>
 In Motoko, variables can be declared using either the "**let**" or "**var**" keyword, followed by the assignment operator "**=**". Variables declared with "**let**" are immutable, meaning that their value cannot be changed once they are assigned. Conversely, variables declared with "**var**" are mutable, which means that their value can be reassigned to a new value at any time using the reassignment operator "**:=**".
-<br/> <b> Whenever you </b> declare a variables don't forget to end the declaration by using the "**;**" otherwise Motoko will complain! <br/>
+<br/> <b> Whenever you </b> declare variables don't forget to end the declaration by using the "**;**" otherwise Motoko will complain! <br/>
 Let's declare a few variables:
 ```
 let a = 5;
@@ -102,7 +102,7 @@ a := 5;
 An attempt is made to reassign a value to an immutable variable - that's why an error will occur. The specific error message will be `type error [M0073], expected mutable assignment target.` This error message indicates that the variable being reassigned is immutable and cannot be changed.
 
 ## <a id="types"> 🍎 Types </a>
-The Motoko language places a strong emphasis on types, and is more strict in enforcing them compared to other general-purpose languages like Javascript or Python. This strictness serves a purpose, as it helps prevent errors and issues.
+The Motoko language places a strong emphasis on types and is more strict in enforcing them compared to other general-purpose languages like Javascript or Python. This strictness serves a purpose, as it helps prevent errors and issues.
 <p align="center"> <img src="./img/motoko_primitives_types.png" width="800px" style="border: 2px solid black;"> </p>
 <p align="center"> A few basics types in Motoko</p>
 
@@ -121,7 +121,7 @@ var age = 20;
 Let's go through a few types!
 
 ## <a id="nat"> 🔢 Nat </a>
-**Nat** is used for unbounded natural numbers (1,2,3,4,......♾️). If you try to assign a negative number to a **Nat** the program will trap. Unbounded means that they will never [overflow](https://www.youtube.com/watch?v=WN8i5cwjkSE). The memory representation used will grow to accomodate any finite number. 
+**Nat** is used for unbounded natural numbers (1,2,3,4,......♾️). If you try to assign a negative number to a **Nat** the program will trap you. Unbounded means that they will never [overflow](https://www.youtube.com/watch?v=WN8i5cwjkSE). The memory representation used will grow to accommodate any finite number. 
 
 ```
 let n : Nat = 10;
@@ -132,7 +132,7 @@ The usual operations are also included:
 ```
 let a : Nat = 1 + 1; //2
 ```
-- Subsctraction: you can substracte two numbers using the substraction operator "**-**":
+- Subtraction: you can subtract two numbers using the subtraction operator "**-**":
 ```
 let a : Nat = 10 - 2; //8
 ```
@@ -148,7 +148,7 @@ let b : Nat = 3 % 2; //1
 ```
 
 ## <a id="int"> ➖ Int </a>
-The **Int** data type includes all integers, both positive and negative numbers. This includes all the numbers in the **Nat** data type. The same mathematical operations seen earlier (addition, multiplication, subtraction, division and modulo) can be performed on both **Int** and **Nat** data types.
+The **Int** data type includes all integers, both positive and negative numbers. This includes all the numbers in the **Nat** data type. The same mathematical operations seen earlier (addition, multiplication, subtraction, division, and modulo) can be performed on both **Int** and **Nat** data types.
 
 > Motoko includes special versions of integers and natural numbers that have a limited range of values that can be represented. These versions are different from the regular versions. They each have a specific number of bits (8, 16, 32, or 64) that determines the range of values they can represent. If a value exceeds the limit, the program will stop running and an error will occur.
 
@@ -164,7 +164,7 @@ The type **Text** is used to represent sequences of characters, such as words or
 ```
 let t : Text = "Motoko bootcamp 2023";
 ```
-> We will see in another module that the type **Text** is actually a concatenation of another type called **Char**.
+> We will see in another module that the type **Text** is a concatenation of another type called **Char**.
 
 ## <a id="function"> ⚙️ Function </a>
 With the knowledge that we now have - let's look at the following actor:
@@ -172,11 +172,11 @@ With the knowledge that we now have - let's look at the following actor:
 <p align="center"> <img src="./img/motoko_sample_code.png" width="800px" style="border: 2px solid black;"> </p>
 
 This code is structured into 2 different parts:
-- A variable declaration for a variable called **"name"** of type **Text**. This variables is assigned to the value **"Motoko"**.
-- A function declaration for a public function called **"change_name"** that takes an argument called **"new_name"** of type **Text** and (asynchronously), modify our internal variable and returns its value.
+- A variable declaration for a variable called **"name"** of type **Text**. These variables are assigned to the value **"Motoko"**.
+- A function declaration for a public function called **"change_name"** that takes an argument called **"new_name"** of type **Text** and (asynchronously), modifies our internal variable and returns its value.
 
 <b> Async? Public?  </b>
-There a lot of keywords that we need to explain. Let's take this one at a time:
+There are a lot of keywords that we need to explain. Let's take this one at a time:
 - **Public**: the "**public**" keyword in the function declarations indicates that the function can be accessed and called by external users or other canisters. On the other hand, "private" functions can only be called by the canister itself as we'll see later.
 
 - **Async**: the "**async**" keyword before the return value indicates that the function will take some time to complete and the caller will have to wait for a response. This is in line with the actor model of canisters, which means that they always respond to requests with a delay. 
@@ -189,7 +189,7 @@ The **body** of the function is a set of instructions executed when the function
 ```
 name := new_name;
 ``` 
-- The second instrucion on will returns whatever is now stored in the "**name**" variable.
+- The second instruction on will returns whatever is now stored in the "**name**" variable.
 ```
 return name; 
 ``` 
@@ -201,17 +201,17 @@ Let's take a look at the following code:
 <p align="center"> There is something wrong 😖</p>
 
 
-In this example we are indicating that the return type of **change_name** is a **Nat** but we are actually returning name which is of type **Text**. In this case the Motoko compiler will indicate:
+In this example, we are indicating that the return type of **change_name** is a **Nat** but we are returning name which is of type **Text**. In this case, the Motoko compiler will indicate:
 ```
 expression of type
   Text
-cannot produce expected type
+cannot produce an expected type
   Nat
 ```
 
 This is called a **Type error** and this is probably the most common type of error - so keep that in mind!
 
-Another common error that we've hinted earlier is the following:
+Another common error that we've hinted at earlier is the following:
 ```
 let a : Nat = 10 - 20;
 ```
@@ -226,7 +226,7 @@ The deployment will fail and returns an error message that states:"**Call was re
 ## <a id="what-is-candid"> 👽 What is Candid and why do we need it? </a>
 An important concept that you'll need to become familiar with is "**Candid**".
 Let's imagine the following situation:
-- We are writting a canister in Motoko and we have defined a value x of type **Nat**. 
+- We are writing a canister in Motoko and we have defined a value x of type **Nat**. 
 ```
 let x : Nat = 5;
 ```
@@ -244,19 +244,19 @@ The situation will be the following:
 <p align="center"> <img src="./img/rust_motoko_situation.png" width="600px" style="border: 2px solid black;"> </p>
 <p align="center"> Communication can be hard sometimes...</p>
 
-From the perspective of the Rust canister, there is a fundamental problem: the "**square**" method expects an input of type **u128** and returns an output of same type, but the value x that it will receive is of type **Nat**. This creates an issue as we are attempting to mix Motoko types (**Nat**) and Rust types (**u128**). <br/>
+From the perspective of the Rust canister, there is a fundamental problem: the "**square**" method expects an input of type **u128** and returns an output of the same type, but the value x that it will receive is of type **Nat**. This creates an issue as we are attempting to mix Motoko types (**Nat**) and Rust types (**u128**). <br/>
 
-> Composing services (i.e canisters) written in different languages is central to the vision of the Internet Computer.  This is why we need to introduce an Interface Description Language (IDL). An interface description language (IDL) is a generic term for a language that lets a program written in one language communicate with another program written in an other unknown language. 
+> Composing services (i.e canisters) written in different languages is central to the vision of the Internet Computer.  This is why we need to introduce an Interface Description Language (IDL). An interface description language (IDL) is a generic term for a language that lets a program written in one language communicate with another program written in another unknown language. 
 
 Candid is an IDL describing the public services deployed in canisters on the Internet Computer. The Candid interface allows inter-operation between services, and between services and frontends, independently of the programming language used.
 
-The purpose of the Candid interface is similar to the purpose of a [REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api), but where APIs typically use [JSON](https://www.youtube.com/watch?v=iiADhChRriM) to exchange data, Candid is an Interface Description Language (IDL). IDL is platform and programming language neutral, and descibes the service, data formats, data structures etc. Read more about Candid in the documentation.
+The purpose of the Candid interface is similar to the purpose of a [REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api), but where APIs typically use [JSON](https://www.youtube.com/watch?v=iiADhChRriM) to exchange data, Candid is an Interface Description Language (IDL). IDL is platform and programming language-neutral and describes the service, data formats, data structures, etc. Read more about Candid in the documentation.
 
-Candid solves the problem we’ve raised earlier by enabling a mapping between types in different languages. 
+Candid solves the problem we raised earlier by enabling a mapping between types in different languages. 
 
 <p align="center"> <img src="./img/candid_mapping.png" width="600px" style="border: 2px solid black;"> </p>
 
-We can define the interface the Rust canister with the following Candid file:
+We can define the interface of the Rust canister with the following Candid file:
 ```
 service : {
   "square": (nat) -> (nat) query;
@@ -281,17 +281,17 @@ $ dfx start
 ```bash
 $ dfx deploy
 ```
-The Candid interface is automatically generated when building a Motoko project, but it can also be written manually. In its simplest form, the Candid DID-file contains a service description. When the project is deployed, the `greet.did` file will contain this service description:
+The Candid interface is automatically generated when building a Motoko project, but it can also be written manually. In its simplest form, the Candid DID file contains a service description. When the project is deployed, the `greet. did` file will contain this service description:
 ```
 service : {
   greet: (text) -> (text) query;
 }
 ```
-> You can find the .did file under .dfx/local/canisters/greet_backend. If you don't see it make sure that you have build & deployed the project.
+> You can find the .did file under .dfx/local/canisters/greet_backend. If you don't see it make sure that you have built & deployed the project.
 
-The greet dApp has one public functions: `greet(text)`. From the service description we can see, that the greet() function takes a text and returns another text, and the service is a query function (faster execution). 
+The greet dApp has one public function: `greet(text)`. From the service description we can see, that the greet() function takes a text and returns another text, and the service is a query function (faster execution). 
 
-You can see more advanced uses of Candid in the [documentation](https://internetcomputer.org/docs/current/developer-docs/build/candid/candid-concepts) or in other [Motoko examples](https://github.com/dfinity/examples/tree/master/motoko).
+You can see more advanced uses of Candid in the [documentation](https://internetcomputer.org/docs/current/developer-docs/build/candid/candid-concepts) or in other examples [Motoko examples](https://github.com/dfinity/examples/tree/master/motoko).
 
 The Candid interface, as previously mentioned, allows inter-operation between services, and between services and frontends. Candid is also very useful for calling the canisters from different places:
 - Using the terminal with `dfx`. 
@@ -301,7 +301,7 @@ The Candid interface, as previously mentioned, allows inter-operation between se
 <b> Let's take a look at those different methods! </b>
 
 ## <a id="using-the-terminal"> 📺 Using the terminal (dfx) </a>
-The Candid interface allows you to call backend services or functions from the command line. This is useful for administrative tasks that do not require a frontend or for testing the backend. In the example of the Greet dapp, you can call the greet() method by running the command:
+The Candid interface allows you to call backend services or functions from the command line. This is useful for administrative tasks that do not require a front end or for testing the back end. In the example of the Greet dApp, you can call the greet() method by running the command:
 ```bash
 $ dfx canister call greet_backend greet '("motoko")'
 ("Hello, motoko!")
@@ -316,10 +316,10 @@ $ dfx canister --network ic call <CANISTER_NAME OR CANISTER_ID> <METHOD_NAME> '(
 ```
 > Note that when using dfx you should always put your arguments between "**()**". The format for the arguments is the Candid format. 
 
-For more information about how to call canisters from commandline, see the [documentation](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister).
+For more information about how to call canisters from the command-line, see the [documentation](https://internetcomputer.org/docs/current/references/cli-reference/dfx-canister).
 
 ## <a id="candid-ui"> 📲 Candid UI </a>
-While the commandline can be very practical, there's also an easier way to call the backend services, and that's by using the Candid UI. When a project is deployed, besides the Candid interfaces, an asset canister running the Candid UI is also deployed. The built process will show the URL in the console, but the URL can also be found in `greet/.dfx/local/canister_ids.json`:
+While the command-line can be very practical, there's also an easier way to call the backend services, and that's by using the Candid UI. When a project is deployed, besides the Candid interfaces, an asset canister running the Candid UI is also deployed. The built process will show the URL in the console, but the URL can also be found in `greet/.dfx/local/canister_ids.json`:
 
 ```json
 {
@@ -349,7 +349,7 @@ One important confusion to avoid is the difference between the local & live Cand
 <p align="center"> <img src="./img/candid_live.png" width="600px" style="border: 2px solid black;"> </p>
 <p align="center"> Check the message left for you and then leave one for the next student. Be nice 🙏 </p>
 
-- The local Candid UI that we've tried earlier is only deployed on your local replica. It can only give you access to the canister that you've deployed locally.
+- The local Candid UI that we tried earlier is only deployed on your local replica. It can only give you access to the canister that you've deployed locally.
 
 > By the way - the Candid UI (live or local) is also deployed in a canister.
 
@@ -360,7 +360,7 @@ The greet dApp has both a backend and a frontend, and the frontend accesses the 
 - greet_backend 
 - greet_frontend
 
-Let's take a look at the frontend's JavaScript file located at `src/greet_frontend/src/index.js` . This file is responsible for handling the front-end logic of the greet dApp. The front-end and back-end are connected using the Candid interface which allows the front-end to access the back-end services.
+Let's take a look at the frontend's JavaScript file located at `src/greet_frontend/src/index.js`. This file is responsible for handling the front-end logic of the greet dApp. The front-end and back-end are connected using the Candid interface which allows the front-end to access the back-end services.
 
 ```javascript
 import { greet_backend } from "../../declarations/greet_backend";
@@ -383,7 +383,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   return false;
 });
 ```
-Two lines of code in this file is worth paying attention to, with regards to Candid. The first line is where the Candid service description is imported, and in this case it's actually not the greet.did file but the index.js file. The Candid index.js is automatically generated when the project is built, and imports the Motoko backend's services.
+Two lines of code in this file are worth paying attention to. The first line is where the Candid service description is imported, and in this case, it's not the greet.did file but the index.js file. The Candid index.js is automatically generated when the project is built and imports the Motoko backend's services.
 
 ```javascript
 import {greet_backend } from "../../declarations/greet_backend";
@@ -393,12 +393,12 @@ After importing the Candid interface we can now use the public backend service, 
 ```javascript
 const greeting = await greet_backend.greet(name);
 ```
-The update function `greet()` is called with the name as a parameter, which will returns the greet message. The call is asynchronous so an **await** is added so the frontend is waiting for a response before moving on. 
+The update function `greet()` is called with the name as a parameter, which will return the greeting message. The call is asynchronous so an **await** is added so the front end is waiting for a response before moving on. 
 
-A number of agents are developed by both DFINITY and the community to easily integrate the Candid interface in different programming languages. See the [documentation](https://internetcomputer.org/docs/current/developer-docs/build/agents/) for a list of the available agents.
+Several agents are developed by both DFINITY and the community to easily integrate the Candid interface in different programming languages. See the [documentation](https://internetcomputer.org/docs/current/developer-docs/build/agents/) for a list of the available agents.
 
 ## <a id="motoko-playgroun"> 🛝 Motoko Playground </a>
-For testing smaller code snippets, or test some ideas, [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app) can be very useful. You can write Motoko code in the editor, and deploy it to canisters without goint through the steps of manually deploying the code to either the local or main net. All public functions/services can be tested with the built-in Candid UI. Test the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app) by selecting the Counter project and see the same Candid interface as in the examples above. 
+For testing smaller code snippets, or testing some ideas, [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app) can be very useful. You can write Motoko code in the editor, and deploy it to canisters without going through the steps of manually deploying the code to either the local or main net. All public functions/services can be tested with the built-in Candid UI. Test the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app) by selecting the Counter project and seeing the same Candid interface as in the examples above. 
 
 <p align="center"> <img src="./img/motoko_playground.png" width="800px"> </p>
 
@@ -428,7 +428,7 @@ actor {
   };
 }
 ```
-4.  False or True: we can remove the keyword **async** for return argument of a query function since queries are faster to answer.
+4.  False or True: we can remove the keyword **async** for the return argument of a query function since queries are faster to answer.
 
 # <a id="coding-challenges"> 🥊 Coding challenges </a>
 1. Write a function **multiply** that takes two natural numbers and returns the product. 
@@ -445,8 +445,8 @@ hours_to_minutes(n : Nat) -> async Nat
 ```
 4. Write two functions **set_counter** & **get_counter** .
 
-- set_counter sets the value of counter to n.
-- get_counter returns the current value of counter.
+- set_counter sets the value of the counter to n.
+- get_counter returns the current value of the counter.
 ```
 set_counter(n : Nat) -> async ()
 get_counter() -> async Nat

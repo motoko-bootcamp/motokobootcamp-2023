@@ -7,7 +7,7 @@ Today, we're diving into the Motoko language with three dedicated lectures. You'
 - Motoko: Optional types, switch/case, Option & List. <br/>
 This lecture will cover the usage of optional types in Motoko, how to handle nullable values using **Option** and **List**, and how to use the switch/case statement for control flow.
 - Motoko: Generic types & Arrays. <br/>
-In this lecture, you'll learn about how to manipulate arrays in Motoko. This is an important topic has this is a more advanced data structure than what we've in seen in Day1. You will also see that the **Array** type in Motoko is intimely linked to another concept called **Generic**.  
+In this lecture, you'll learn about how to manipulate arrays in Motoko. This is an important topic as this is a more advanced data structure than what we've in seen in Day1. You will also see that the **Array** type in Motoko is intimely linked to another concept called **Generic**.  
 - Motoko: Char, Text & Iterators. <br/>
 In this lecture we will cover the manipulation of **Char** and **Text** in Motoko and see how those too are linked through iterators also called **Iter**.
 
