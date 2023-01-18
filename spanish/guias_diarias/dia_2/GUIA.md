@@ -153,7 +153,7 @@ actor {
 > Con respecto a lo que dijimos antes: puede parecer confuso que una variable mutable, "**some**", se devuelva al final de la función. Sin embargo, es importante comprender la diferencia entre compartir la variable en sí y compartir el valor de la variable. En este caso, es el valor de "**some**" lo que se comparte y no la variable en sí. Este concepto también se puede aplicar a matrices mutables mediante el uso de un método llamado '**Freeze**', que permite compartir una "instantánea" de la matriz, en lugar de la variable en sí.
 
 ## 📚 La biblioteca base
-Hasta ahora solo hemos analizado las operaciones que están integradas en el lenguaje. Para realizar operaciones más complejas, necesitaremos usar módulos, particularmente la [Biblioteca base](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts#the -motoko-base-library).
+Hasta ahora solo hemos analizado las operaciones que están integradas en el lenguaje. Para realizar operaciones más complejas, necesitaremos usar módulos, particularmente la [Biblioteca base](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts#the-motoko-base-library).
 
 Un módulo es una colección de código escrito por otra persona que puede usar en su propio programa. Exploraremos diferentes métodos para importar módulos e incluso crear nuestros propios módulos, pero por hoy nos centraremos en importar módulos desde la biblioteca Base. La biblioteca Base es un conjunto de módulos que manejan operaciones comunes para tipos de uso común (como Array, Bool, Nat, Int, Text).
 
@@ -211,7 +211,7 @@ En última instancia, los DAO se implementan a través de contratos inteligentes
 Sería el caso de una propuesta como:
 - **Tokens Mint 5000** donde se ejecutaría una función "mint" correspondiente en el contrato inteligente dedicado.
 - **Grabar 2500 tokens** donde se ejecutaría una función de "grabar" correspondiente en el contrato inteligente dedicado.
-- "[Aumentar la tasa de rendimiento de DAI al 1%] (https://www.theblock.co/post/190526/makerdao-is-voting-on-increasing-yield-for-the-dai-stablecoin) donde un el parámetro correspondiente se modificaría en el contrato inteligente dedicado.
+- [Aumentar la tasa de rendimiento de DAI al 1%](https://www.theblock.co/post/190526/makerdao-is-voting-on-increasing-yield-for-the-dai-stablecoin) donde un el parámetro correspondiente se modificaría en el contrato inteligente dedicado.
 
 Sin embargo, ¿qué pasaría si la propuesta no fuera ejecutable mediante un contrato inteligente? Digamos:
 
@@ -226,7 +226,7 @@ En última instancia, el sitio web no está alojado en Ethereum y las responsabi
 ## 🚀 De contratos inteligentes a Canisters
 Los contratos inteligentes son bastante limitados:
 - No pueden almacenar ninguna cantidad significativa de datos (fotos, videos, archivos...)
-Por ejemplo: [el costo de almacenar 1 GB de datos en la cadena de bloques de Ethereum se estima en alrededor de $5,5 millones] (https://steemit.com/ethereum/@suryanshkumr/you-need-usd5-5m-to-save-1gb- datos-en-ethereum-blockchain-d)!
+Por ejemplo: [el costo de almacenar 1 GB de datos en la cadena de bloques de Ethereum se estima en alrededor de $5,5 millones](https://steemit.com/ethereum/@suryanshkumr/you-need-usd5-5m-to-save-1gb-datos-en-ethereum-blockchain-d)!
 - No puede interactuar con contratos inteligentes directamente desde un navegador: por lo general, se debe instalar una billetera (extensión) y esta billetera hará el relevo.
 - Los contratos inteligentes se basan en oráculos para recopilar información del mundo exterior y facilitar la comunicación con él, ya que no pueden interactuar con nada fuera de la cadena de bloques por sí mismos. Los oráculos sirven como puente entre los contratos inteligentes y las fuentes y sistemas de datos externos
 
@@ -256,9 +256,9 @@ Si eso suena interesante: ¡bienvenido al mundo de los **Canisters**! Imagina lo
 <p align="center"> Canister Canister Canister!</p>
 Un poco más de información:
 
-- ¡Un Canister puede almacenar hasta 48 GB de datos! Además, esta es una limitación temporal y la limitación de la memoria se [actualiza con frecuencia] (https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/139).
+- ¡Un Canister puede almacenar hasta 48 GB de datos! Además, esta es una limitación temporal y la limitación de la memoria se [actualiza con frecuencia](https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/139).
 - ¡Los Canisters pueden comunicarse con el mundo Web 2.0 sin necesidad de depender de oráculos externos!
-- Los Canisters pueden contener claves y firmar transacciones en otras cadenas de bloques (Bitcoin, Ethereum y pronto todas las monedas) gracias a [Threshold ECDSA] (https://internetcomputer.org/docs/current/developer-docs/integrations/t- ecsa/). Cada réplica tiene una parte de la clave privada y pueden combinar sus partes para crear firmas ECDSA. ¡La clave privada **nunca** se reconstruye!
+- Los Canisters pueden contener claves y firmar transacciones en otras cadenas de bloques (Bitcoin, Ethereum y pronto todas las monedas) gracias a [Threshold ECDSA](https://internetcomputer.org/docs/current/developer-docs/integrations/t- ecsa/). Cada réplica tiene una parte de la clave privada y pueden combinar sus partes para crear firmas ECDSA. ¡La clave privada **nunca** se reconstruye!
 
 ## 👑 ¿Quién controla el Canister?
 Canisters en Internet Computer puede tener uno o varios controladores, que pueden actualizar, eliminar y modificar el estado del Canister. Hay tres casos principales a considerar:
@@ -319,10 +319,10 @@ Las propuestas que pueden ser votadas por la ENN (Red del Sistema Nervioso) se a
 - Gestión de subredes: propuestas relacionadas con la administración de subredes de red, como la creación de nuevas subredes, la adición y eliminación de nodos de subred o la división de subredes.
 - Gobernanza: propuestas relacionadas con la administración de la gobernanza, como mociones y configuración de determinados parámetros.
 
-Para obtener más información sobre el increíble poder del NNS, consulte [Wiki de Internet Computer] (https://wiki.internetcomputer.org/wiki/Network_Nervous_System).
+Para obtener más información sobre el increíble poder del NNS, consulte [Wiki de Internet Computer](https://wiki.internetcomputer.org/wiki/Network_Nervous_System).
 
 ## 🔎 ¿Cómo funciona el NNS?
-El NNS está constituido por **diferentes Canisters**. Cada Canister se implementa en la misma subred que también se denomina [subred NNS](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6- eqe).
+El NNS está constituido por **diferentes Canisters**. Cada Canister se implementa en la misma subred que también se denomina [subred NNS](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
 
 <p align="center"> <img src="../../../daily_guides/day_2/img/nns_recap.png" width="800px" style="border: 2px solid black;"> </p>
 <p align="center"> Visión general de canisters corriendo la NNS</p>
