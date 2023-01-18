@@ -20,7 +20,6 @@ Install the necessary packages.
 ```
 npm run install
 ```
-Generate the interfaces
 Deploy on the IC 
 ```
 dfx deploy --network ic
