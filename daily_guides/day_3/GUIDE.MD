@@ -71,7 +71,7 @@ public func handle_null_value(n : ?Nat) : async Text {
 };
 ```
 
-A final word on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). This module allows you to perform operations on optional values. 
+A final word on the optional type - there is a module from the Base library called [Option](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Option). This module allows you to perform operations on optional values. 
 
 <p align="center"> <img src="./img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
