@@ -235,7 +235,7 @@ Other properties of smart-contracts, that you might or might not like depending 
 - Smart-contracts can never be updated - they are permanent and immutable once deployed to a blockchain 
 - Users need to pay fees to interact with a smart-contract.  
 
-To build dApps so far developers had to resort to solve thoses issues by relying on a third-party actor. Usually a centralized entity - a few of them:
+To build dApps so far developers had to resort to solve those issues by relying on a third-party actor. Usually a centralized entity - a few of them:
 - AWS to store the frontend and data associated with the dApp. 
 - Metamask to communicate from the browser with the blockchain. 
 - Chainlink to interact with the external world (Web2) - though Chainlink is probably the least centralized in the list so far. 
