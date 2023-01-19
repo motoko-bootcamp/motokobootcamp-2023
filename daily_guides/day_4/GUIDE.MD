@@ -326,7 +326,7 @@ actor {
 ```
 This would be a breaking change for e.g. the client application if it expects an Integer. With this small change, the Candid interface will change.
 
-## Data structure changes
+### Data structure changes
 Another example of how data can be lost, is by changing the data types. 
 
 ```
