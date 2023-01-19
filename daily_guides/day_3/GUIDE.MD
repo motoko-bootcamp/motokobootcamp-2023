@@ -18,7 +18,8 @@ In this lecture, you'll learn how to use these powerful data structures and how 
 In Motoko, like in many other programming languages, there is a special value called "null" that represents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value: null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of names as input and returns the first index such that the name is in the array at that index. If the name is not found, the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
 
 If we write the following:
-```
+
+```motoko
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async Nat {
     var index : Nat = 0;
@@ -41,9 +42,9 @@ does not have the expected type
 This is because "null" is not of type **Nat**. 
 To indicate that a function may return either a **Nat** value or "null", we need a way to express that the function's return type can be one of two possibilities. This is because the specific return value of the function depends on the input that we don't know in advance, so we can't predict if the function will return a **Nat** or "null" until it is executed. <br/>
 
-To express that we can use an **optional type**: "**?T**". 
-In our case, we would use "**?Nat**". We can rewrite our code using this new notation:
-```
+To express that we can use an **optional type**: `?T`. 
+In our case, we would use `?Nat`. We can rewrite our code using this new notation:
+```motoko
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async ?Nat {
     var index : Nat = 0;
@@ -61,7 +62,7 @@ public func find_name(name : Text) : async ?Nat {
 
 The "optional" type is often used in conjunction with the "switch/case" pattern in Motoko. This pattern allows you to handle an optional value and execute different parts of your code depending on whether the input value is "null" or not. In other words, you can use the "switch/case" pattern to check if an optional value is present or not, and then perform different actions based on that. This allows for more elegant and safer code as it allows you to handle the case where the input is null and avoid any unexpected behavior.
 
-```
+```motoko
 public func handle_null_value(n : ?Nat) : async Text {
     switch(n) {
         // Check if n is null 
@@ -80,14 +81,12 @@ A final word on the optional type - there is a module from the Base library call
 <p align="center"> <img src="./img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
 For instance,  you can use the "**Option.get**" function to unwrap an optional value with a default value - as in the following:
-```
+```c
 import Option "mo:base/Option";
 actor {
-
     public func always_return_a_nat(n : ?Nat) : async Nat {
         return(Option.get(n, 0))
     };
-
 }
 ```
 
@@ -110,15 +109,15 @@ Will return:
 (0 : nat)
 ```
 ## 👤 Generic Type
-In the previous section, we briefly introduced the concept of "**generic type**" with the notation "**?T**". Now, let's dive deeper and explore the exciting world of generics.
+In the previous section, we briefly introduced the concept of "**generic type**" with the notation `?T`. Now, let's dive deeper and explore the exciting world of generics.
 
-A generic type, usually written as "T", allows you to write functions and code that can adapt to different types. When we talk about "**T**" in programming, it refers to "whatever type you want".
+A generic type, usually written as `T`, allows you to write functions and code that can adapt to different types. When we talk about "**T**" in programming, it refers to "whatever type you want".
 This means that you can create a single function or class that can handle multiple types of inputs or data, without having to write separate code for each type.
 
 Let's imagine we have a task at hand - to determine if the size of an array is even or not. We're going to write a function called "**is_array_size_even**" that takes an array as an input and returns a Boolean value indicating whether the size of that array is even or not.
 
 One way to accomplish this is to write something like this:
-```
+```motoko
 public func is_array_size_even(array : [Nat]) : async Bool {
     let size = array.size();
     if(size % 2 == 0){
@@ -130,10 +129,10 @@ public func is_array_size_even(array : [Nat]) : async Bool {
 ```
 This function works as intended, but it's limited to arrays filled with **Nat**. So, what if we want to check the size of an array filled with **Text** or **Int**?
 
-One approach would be to create a separate function for each possible type of array, like "**_is_array_size_even_nat**", "**_is_array_size_even_text**", "**_is_array_size_even_int**". But as you can imagine, this quickly becomes hard to manage and maintain.
+One approach would be to create a separate function for each possible type of array, like "**is_array_size_even_nat**", "**is_array_size_even_text**", "**is_array_size_even_int**". But as you can imagine, this quickly becomes hard to manage and maintain.
 
 A better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
-```
+```motoko
 func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
     if(size % 2 == 0){
@@ -146,8 +145,8 @@ func is_array_size_even<T>(array : [T]) : Bool {
 
 >Notice the "**\<T>**" following the name of the function. It means that this function now depends on the type of T.
 
-When using the "**array_size**" function, it's important to remember that you'll need to specify the type of array you're using it on. 
-```
+When using the "**is_array_size_even**" function, it's important to remember that you'll need to specify the type of array you're using it on. 
+```motoko
 func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
     if(size % 2 == 0){
@@ -171,7 +170,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     <p align="center"> <img src="./img/array_find.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
-    ```
+    ```motoko
     import Array "mo:base/Array";
     actor {
         let f = func (n : Nat) : Bool {
@@ -194,11 +193,11 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
         It should return the first value that is equal to 10 in the array. Since there is none it will return <strong> null </strong>.
     </details>
 
-- Filter: this function will take an array, and for every element in that array, it will use the "predicate" (a separate function or statement) to decide if it is true or false. If the predicate returns true for a particular element, that element will be included in the new array, otherwise, it will be skipped. The function will create a new array containing only the elements that passed the predicate test.
+- [Filter](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-filter): this function will take an array, and for every element in that array, it will use the "predicate" (a separate function or statement) to decide if it is true or false. If the predicate returns true for a particular element, that element will be included in the new array, otherwise, it will be skipped. The function will create a new array containing only the elements that passed the predicate test.
     <p align="center"> <img src="./img/array_filter.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
-    ```
+    ```motoko
     import Array "mo:base/Array";
     actor {
         let f = func (n : Nat) : Bool {
@@ -219,11 +218,11 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
        An array where only values below 10 are kept (the order is not modified)  : <strong> [1, 8, 2] </strong>.
     </details>
 
-- Map: this function will take an array and a function 'f' that maps the elements of the array of type X to another type Y. This function will apply this function to each element in the original array and create a new array with the result of the function f applied to each element. The new array will have the same order as the original array.
+- [Map](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-map): this function will take an array and a function 'f' that maps the elements of the array of type X to another type Y. This function will apply this function to each element in the original array and create a new array with the result of the function f applied to each element. The new array will have the same order as the original array.
     <p align="center"> <img src="./img/array_map.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
-    ```
+    ```motoko
     import Array "mo:base/Array";
     actor {
         let f = func (n : Nat) : Nat {
@@ -236,14 +235,14 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     };
     ```
     <details>
-         <summary > 🤔 What do you think riddle <strong> ([1, 2, 3, 4]) </strong> will return? 
+         <summary > 🤔 What do you think riddle<strong>([1, 2, 3, 4]) </strong> will return? 
          </summary>
           An array where all values have been increased by one (the order is not modified)  : <strong> [2, 3, 4, 5] </strong>.
     </details>
 
 Sometimes it's useful to give names to functions to reuse them later - you can use variables to store functions as you can do with any other type.
 
-```
+```motoko
 let f = func (x : Nat) : Nat {
   return(x + x) 
 }
@@ -253,7 +252,7 @@ let f = func (x : Nat) : Nat {
 ##  Prerequisites
 If you are not familiar with HTTP, make sure to [watch this video](https://www.youtube.com/watch?v=iYM2zFP3Zn0) before reading further. 
 
-## 👍 HTTP request vs HTPP outcalls
+## 👍 HTTP request vs HTTP outcalls
 In this module, we will cover how canisters can be accessed through HTTP requests. This is a separate topic from the "HTTP Outcalls" lecture, which is planned for Day 5.
 
 **HTTP Request**: Canisters can handle incoming requests and serve web pages. <br/>
@@ -263,7 +262,8 @@ In this module, we will cover how canisters can be accessed through HTTP request
 Whenever you [access a canister](https://wujxq-qqaaa-aaaaj-qazca-cai.raw.ic0.app/) through your browser there are a few steps involved. Let's go through all of them.<br/>
 You will notice that URLs on the Internet Computer are of the following form: 
 **<CANISTER_ID>.ic0.app**
-The **.ic0.app** indicates that you are reaching out to [boundary nodes](). 
+The **.ic0.app** indicates that you are reaching out to [boundary nodes](https://github.com/motoko-bootcamp/motokobootcamp-2023/blob/main/daily_guides/day_3/GUIDE.MD#what-are-boundary-nodes).
+
 ## What are boundary nodes?
 Canisters are hosted in the nodes that participate in the IC consensus. However, those nodes are not directly accessible by end users. <br/>
 To protect the consensus nodes & improve performance there is a layer of **boundary nodes** which serve different useful purposes:
@@ -273,7 +273,7 @@ To protect the consensus nodes & improve performance there is a layer of **bound
     - List of subnets.
     - List of nodes and which subnet they belong to.
     - The canisters run by each subnet. 
-- Load balancing among the subnet's replica nodes (i.e if a replica is lacking behind and has already a lot of work on its plate - boundary nodes will send the request to another replica).
+- Load balancing among the subnet's replica nodes (i.e if a replica is lagging behind and has already a lot of work on its plate - boundary nodes will send the request to another replica).
 - Protect subnets from DDoS attacks.
 
 <i> Currently, boundary nodes are run by the DFINITY Foundation. However, the objective (as part of the roadmap) is to have anyone able to set up and run a boundary nodes. This will make interaction with the Internet Computer more reactive for end users and this will make the platform more robust to censorship. You can read more in [the dedicated topic](https://forum.dfinity.org/t/boundary-node-roadmap/15562) if you are interested. </i>
@@ -281,10 +281,10 @@ To protect the consensus nodes & improve performance there is a layer of **bound
 <p align="center"> <img src="./img/http_gateway.png" width="800px" style="border: 2px solid black;"> </p>
 
 ## 📦 Asset canister
-To serve web content on the Internet Computer, a canister should have a method that can handle an http request, which includes the URL, http method, and headers, and produce an HTTP response, consisting of a status, headers, and body. There are two ways to go about that:
+To serve web content on the Internet Computer, a canister should have a method that can handle an http request, which includes the URL, HTTP method, and headers, and produce an HTTP response, consisting of a status, headers, and body. There are two ways to go about that:
 
 - Implement the http_request method and all associated logic yourself (in Motoko). This is what will be doing for our **webpage** canister.
-- Use the provided **asset** canister: this is a special canister whose code has been already implemented by DFINITY. You need to specify the type of this canister in dfx.json & add the source folder of your web app. Once the asset canister is deployed on the Internet Computer the website can be accessed at http://<canister id>.ic0.app and http://<canister id>.raw.ic0.app. This is what we will use for our **interface** canister. The frontend canister that is shipped when you deploy a project with `dfx new <project>` is an asset canister (as you can confirm by looking at `dfx.json`).
+- Use the provided **asset** canister: this is a special canister whose code has been already implemented by DFINITY. You need to specify the type of this canister in `dfx.json` & add the source folder of your web app. Once the asset canister is deployed on the Internet Computer the website can be accessed at `http://<canister id>.ic0.app` and `http://<canister id>.raw.ic0.app`. This is what we will use for our **interface** canister. The frontend canister that is shipped when you deploy a project with `dfx new <project>` is an asset canister (as you can confirm by looking at `dfx.json`).
 
 You can access [the source code for this canister written in Rust](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) under the [DFINITY organization](https://github.com/dfinity).  
 
@@ -312,7 +312,7 @@ Once the [service worker](https://www.npmjs.com/package/@dfinity/service-worker)
 > One last thing: the service worker received when accessing **ic0.app** could in theory be faked or manipulated to certify invalid responses. Most users won't go through the trouble of verifying the service worker that is served to them. The way to solve this would be to have the public key of the Internet Computer directly shipped into the hardware or the browser. **That would be pretty dope!**  
 
 ## 🤙 Contacting the canister.
-Once the boundary node has received the request. It will encode it into Candid and automatically call the``` http_request``` method of the canister.
+Once the boundary node has received the request. It will encode it into Candid and automatically call the ```http_request``` method of the canister.
 reachable by browsers, you need to implement an ``http_request``method as part of the public interface of your actor!
 
 <p align="center"> <img src="./img/http_request_public_interface.png" width="600px" style="border: 2px solid black;"> </p>
@@ -330,7 +330,7 @@ You may have noticed a few types in the Motoko code shown earlier.
 >It is a recommended practice to create custom types and their associated methods in a separate file for organization, clarity, and reusability.
 
 Let's go through this file together. Here is the content:
-```
+```motoko
 module Http {
     public type HeaderField = (Text, Text);
 
@@ -370,13 +370,13 @@ module Http {
 }
 ```
 The first thing to note is that instead of using our usual **main.mo** file, which typically starts with:
-``` 
+``` motoko
 actor {
 
 }
 ```
 It has been replaced by:
-```
+```motoko
 module {
 
 }
@@ -388,7 +388,7 @@ This indicates that this file will not be used to declare an actor with a public
 
 We can also add a name (it is possible to have multiple modules with different names in the same file - though we will not do it to keep things clear and simple).
 
-```
+```motoko
 module Http {
 
 }
@@ -396,7 +396,7 @@ module Http {
 
 ## 📲  HttpRequest 
 Here is the HttpRequest type in Motoko.
-```
+```motoko
 module Http {
     public type HeaderField = (Text, Text);
 
@@ -423,7 +423,7 @@ https://yq5pi-saaaa-aaaap-aaxfq-cai.raw.ic0.app/
 - The **body** is empty. 
 
 The corresponding object in Motoko would be something like this:
-```
+```motoko
 let request : HttpRequest = {
     body = null;
     headers = [("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0")];
@@ -437,7 +437,7 @@ let request : HttpRequest = {
 
 ## 📟 HttpResponse (Motoko)
 Here is the HttpResponse type in Motoko
-```
+```motoko
 public type HttpResponse = {
     status_code: Nat16;
     headers: [HeaderField];
@@ -461,7 +461,7 @@ public type HttpResponse = {
     <p align="center"> <img src="./img/utf8_encode_decode.png" width="800px" style="border: 2px solid black;"> </p>
 
 - Streaming strategy is a field for handling HTTP responses in a streaming manner, with the ability to callback for more data using the defined callback function. It is defined as follows:
-    ```
+    ```motoko
     public type StreamingStrategy = {
             #Callback: {
                 callback : StreamingCallback;
@@ -508,7 +508,7 @@ Your task for today is to fully implement the **webpage** canister for the core 
 1. True or False: the Internet Computer has a unique public key that can be used to verify responses coming from any subnets.
 2. True or False: when I realize an update call, the boundary node will participate in the consensus but not during query calls.
 3. True or False: I can create a certified variable that will certify the response of the following actor:
-```
+```motoko
 actor {
     public func hello(name : Text) : async Text {
         return ("hello # name");
@@ -522,16 +522,16 @@ actor {
 >  You can check the corresponding structure in the [example repository](https://github.com/sebthuillier/motokobootcamp2023).
 
 1. In your file called `utils.mo`: create a function called `second_maximum` that takes an array [Int] of integers and returns the second largest number in the array.
-```
+```motoko
 second_maximum(array : [Int]) ->  Int;
 ```
 2. In your file called `utils.mo`: create a function called `remove_even` that takes an array [Nat] and returns a new array with only the odd numbers from the original array.
-```
+```motoko
 remove_even(array : [Nat]) -> [Nat];
 ```
 3. In your file called `utils.mo`:  write a function `drop` <T> that takes 2 parameters: an array [T] and a **Nat** n. This function will drop the n first elements of the array and returns the remainder. 
 > ⛔️ Do not use a loop. 
-```
+```motoko
 drop<T> : (xs : [T], n : Nat) -> [T]
 ```
 4. In your file called `book.mo` create a custom type with at least 2 properties (title of type **Text**, pages of type **Nat**), import this type in your `main.mo` and create a variable that will store a book.
