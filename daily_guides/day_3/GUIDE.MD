@@ -18,7 +18,8 @@ In this lecture, you'll learn how to use these powerful data structures and how 
 In Motoko, like in many other programming languages, there is a special value called "null" that represents the absence of a result. This is useful when indicating that a function will return nothing. The value null is of type **Null** (and the type **Null** contains only one value: null). <br/> For example, imagine that you have an array of names called "**names**" and a function called "**find_name**" that takes a list of names as input and returns the first index such that the name is in the array at that index. If the name is not found, the function should return "null" instead of an index. This way, the function indicates that it did not find the name, rather than producing an error! 
 
 If we write the following:
-```
+
+```motoko
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async Nat {
     var index : Nat = 0;
@@ -43,7 +44,7 @@ To indicate that a function may return either a **Nat** value or "null", we need
 
 To express that we can use an **optional type**: "**?T**". 
 In our case, we would use "**?Nat**". We can rewrite our code using this new notation:
-```
+```motoko
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async ?Nat {
     var index : Nat = 0;
@@ -61,7 +62,7 @@ public func find_name(name : Text) : async ?Nat {
 
 The "optional" type is often used in conjunction with the "switch/case" pattern in Motoko. This pattern allows you to handle an optional value and execute different parts of your code depending on whether the input value is "null" or not. In other words, you can use the "switch/case" pattern to check if an optional value is present or not, and then perform different actions based on that. This allows for more elegant and safer code as it allows you to handle the case where the input is null and avoid any unexpected behavior.
 
-```
+```motoko
 public func handle_null_value(n : ?Nat) : async Text {
     switch(n) {
         // Check if n is null 
@@ -80,7 +81,7 @@ A final word on the optional type - there is a module from the Base library call
 <p align="center"> <img src="./img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
 For instance,  you can use the "**Option.get**" function to unwrap an optional value with a default value - as in the following:
-```
+```c
 import Option "mo:base/Option";
 actor {
 
@@ -118,7 +119,7 @@ This means that you can create a single function or class that can handle multip
 Let's imagine we have a task at hand - to determine if the size of an array is even or not. We're going to write a function called "**is_array_size_even**" that takes an array as an input and returns a Boolean value indicating whether the size of that array is even or not.
 
 One way to accomplish this is to write something like this:
-```
+```motoko
 public func is_array_size_even(array : [Nat]) : async Bool {
     let size = array.size();
     if(size % 2 == 0){
@@ -133,7 +134,7 @@ This function works as intended, but it's limited to arrays filled with **Nat**.
 One approach would be to create a separate function for each possible type of array, like "**_is_array_size_even_nat**", "**_is_array_size_even_text**", "**_is_array_size_even_int**". But as you can imagine, this quickly becomes hard to manage and maintain.
 
 A better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
-```
+```motoko
 func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
     if(size % 2 == 0){
@@ -147,7 +148,7 @@ func is_array_size_even<T>(array : [T]) : Bool {
 >Notice the "**\<T>**" following the name of the function. It means that this function now depends on the type of T.
 
 When using the "**array_size**" function, it's important to remember that you'll need to specify the type of array you're using it on. 
-```
+```motoko
 func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
     if(size % 2 == 0){
@@ -171,7 +172,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     <p align="center"> <img src="./img/array_find.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
-    ```
+    ```motoko
     import Array "mo:base/Array";
     actor {
         let f = func (n : Nat) : Bool {
@@ -198,7 +199,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     <p align="center"> <img src="./img/array_filter.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
-    ```
+    ```motoko
     import Array "mo:base/Array";
     actor {
         let f = func (n : Nat) : Bool {
@@ -223,7 +224,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     <p align="center"> <img src="./img/array_map.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
-    ```
+    ```motoko
     import Array "mo:base/Array";
     actor {
         let f = func (n : Nat) : Nat {
@@ -243,7 +244,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
 
 Sometimes it's useful to give names to functions to reuse them later - you can use variables to store functions as you can do with any other type.
 
-```
+```motoko
 let f = func (x : Nat) : Nat {
   return(x + x) 
 }
@@ -330,7 +331,7 @@ You may have noticed a few types in the Motoko code shown earlier.
 >It is a recommended practice to create custom types and their associated methods in a separate file for organization, clarity, and reusability.
 
 Let's go through this file together. Here is the content:
-```
+```motoko
 module Http {
     public type HeaderField = (Text, Text);
 
@@ -370,13 +371,13 @@ module Http {
 }
 ```
 The first thing to note is that instead of using our usual **main.mo** file, which typically starts with:
-``` 
+``` motoko
 actor {
 
 }
 ```
 It has been replaced by:
-```
+```motoko
 module {
 
 }
@@ -388,7 +389,7 @@ This indicates that this file will not be used to declare an actor with a public
 
 We can also add a name (it is possible to have multiple modules with different names in the same file - though we will not do it to keep things clear and simple).
 
-```
+```motoko
 module Http {
 
 }
@@ -396,7 +397,7 @@ module Http {
 
 ## 📲  HttpRequest 
 Here is the HttpRequest type in Motoko.
-```
+```motoko
 module Http {
     public type HeaderField = (Text, Text);
 
@@ -423,7 +424,7 @@ https://yq5pi-saaaa-aaaap-aaxfq-cai.raw.ic0.app/
 - The **body** is empty. 
 
 The corresponding object in Motoko would be something like this:
-```
+```motoko
 let request : HttpRequest = {
     body = null;
     headers = [("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0")];
@@ -437,7 +438,7 @@ let request : HttpRequest = {
 
 ## 📟 HttpResponse (Motoko)
 Here is the HttpResponse type in Motoko
-```
+```motoko
 public type HttpResponse = {
     status_code: Nat16;
     headers: [HeaderField];
@@ -461,7 +462,7 @@ public type HttpResponse = {
     <p align="center"> <img src="./img/utf8_encode_decode.png" width="800px" style="border: 2px solid black;"> </p>
 
 - Streaming strategy is a field for handling HTTP responses in a streaming manner, with the ability to callback for more data using the defined callback function. It is defined as follows:
-    ```
+    ```motoko
     public type StreamingStrategy = {
             #Callback: {
                 callback : StreamingCallback;
@@ -508,7 +509,7 @@ Your task for today is to fully implement the **webpage** canister for the core 
 1. True or False: the Internet Computer has a unique public key that can be used to verify responses coming from any subnets.
 2. True or False: when I realize an update call, the boundary node will participate in the consensus but not during query calls.
 3. True or False: I can create a certified variable that will certify the response of the following actor:
-```
+```motoko
 actor {
     public func hello(name : Text) : async Text {
         return ("hello # name");
@@ -522,16 +523,16 @@ actor {
 >  You can check the corresponding structure in the [example repository](https://github.com/sebthuillier/motokobootcamp2023).
 
 1. In your file called `utils.mo`: create a function called `second_maximum` that takes an array [Int] of integers and returns the second largest number in the array.
-```
+```motoko
 second_maximum(array : [Int]) ->  Int;
 ```
 2. In your file called `utils.mo`: create a function called `remove_even` that takes an array [Nat] and returns a new array with only the odd numbers from the original array.
-```
+```motoko
 remove_even(array : [Nat]) -> [Nat];
 ```
 3. In your file called `utils.mo`:  write a function `drop` <T> that takes 2 parameters: an array [T] and a **Nat** n. This function will drop the n first elements of the array and returns the remainder. 
 > ⛔️ Do not use a loop. 
-```
+```motoko
 drop<T> : (xs : [T], n : Nat) -> [T]
 ```
 4. In your file called `book.mo` create a custom type with at least 2 properties (title of type **Text**, pages of type **Nat**), import this type in your `main.mo` and create a variable that will store a book.
