@@ -88,6 +88,19 @@ Here is an example of a function that returns `true` if the caller is the Princi
   };
 ```
 
+## Accounts
+Accounts are large integers (represented as 32-byte strings) which represent a unique wallet that can hold assets on [The Ledger canister](https://internetcomputer.org/docs/current/references/ledger#_accounts).
+
+### Subaccounts & Default Account
+To derive an account from a Principal, you need what's called a "subaccount". 
+
+The exact algorithm for deriving an account is not important right now, all you need to know is that you need both a Principal and Subaccount to get an Account:
+`func accountIdentifier(principal: Principal, subaccount: Subaccount) : AccountIdentifier'
+
+A subaccount is also a large integer (which could also be represented as a 32-byte string), but it's easier to think of them almost as a "counter".
+
+For any Principal, we refer to the account which corresponds to the subaccount which is equal to 0 as the default account of that principal. If you wanted to generate another account for that Principal, then you could use the subaccount which is equal to 1 to generate another Account. You could even pick any random 32-byte number, and then use it to get an account which coudl be controlled by that Principal. There are a lot of Accounts which could be generated for a Principal, because a 32-bit unsigned integer has a maximum value of 4,294,967,295.
+
 ### Useful documentation
 * Account.mo example (useful helper functions for back end)
 * Account.js example (useful helper functions for front end)
