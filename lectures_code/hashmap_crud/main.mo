@@ -43,6 +43,19 @@ actor {
         postRes;
 
     };
+    
+    public query func readAllPosts () : async [(Nat, Post)] {
+        //1. authenticate
+
+        //2. Hashmap to Iter.
+            let postsIter : Iter.Iter<(Nat, Post)> = posts.entries();
+            
+        //3. Iter to Array.
+            let postsArray : [(Nat, Post)] = Iter.toArray(postsIter);
+
+        //4. Iter to Array.
+            postsArray;
+    };
 
     public func updatePost (post : Post, id : Nat) : async Text {
 
