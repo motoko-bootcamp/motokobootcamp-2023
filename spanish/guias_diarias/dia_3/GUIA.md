@@ -1,6 +1,6 @@
 # Día 3 🐥
 ¡Bienvenido al Día 3 del Motoko Bootcamp! <br/> Esperamos que se sienta como un ninja de la programación listo para abordar temas aún más avanzados. Hoy, nos sumergiremos en las solicitudes HTTP en Motoko y aprenderemos a interactuar con los recipientes desde una interfaz utilizando el agente de JavaScript. También aprenderá sobre coincidencia de patrones y variantes en Motoko, lo que le dará el poder de controlar su código.
-Además, también presentaremos estructuras de datos como operaciones HashMap/TrieMap y CRUD. Estas estructuras de datos serán realmente útiles cuando trabaje en el [proyecto central] (../../core_project/PROJECT.md). <br/>
+Además, también presentaremos estructuras de datos como operaciones HashMap/TrieMap y CRUD. Estas estructuras de datos serán realmente útiles cuando trabaje en el [proyecto central](../../../core_project/PROJECT.md). <br/>
 
 No dudes en pedir ayuda a tus compañeros de equipo o mentores si la necesitas. Recuerde, todos estamos aquí para aprender, reír y apoyarnos unos a otros. 😉
 # 🍿 Conferencias
@@ -8,14 +8,14 @@ No dudes en pedir ayuda a tus compañeros de equipo o mentores si la necesitas. 
 En esta lección, aprenderá cómo puede interactuar con sus recipientes desde una página web usando JavaScript. Esto es extremadamente útil ya que es la forma en que la mayoría de los usuarios interactúan con las dApps. Aprenderás sobre conceptos fundamentales como Identidad, Agente o Actor y cómo usarlos.
 
 - **Motoko: tipo personalizado, variantes, coincidencia de patrones y tipo de resultado.** <br/>
-En esto, aprenderá cómo puede crear sus tipos personalizados, lo que le brinda la capacidad de representar datos de la manera que mejor se adapte a su programa: cómo manejar variantes que le permitan definir diferentes casos y combinarlos con la coincidencia de patrones. Finalmente, aprenderá sobre el tipo **Resultado** en Motoko. Aprenda a crear sus propios tipos, manejar errores, hacer coincidir patrones y hacer que su código sea más eficiente, legible y mantenible.
+En esto, aprenderá cómo puede crear sus tipos personalizados, lo que le brinda la capacidad de representar datos de la manera que mejor se adapte a su programa: cómo manejar variantes que le permitan definir diferentes casos y combinarlos con la coincidencia de patrones. Finalmente, aprenderá sobre el tipo **Result** en Motoko. Aprenda a crear sus propios tipos, manejar errores, hacer coincidir patrones y hacer que su código sea más eficiente, legible y mantenible.
 
 - **Motoko: HashMap, TrieMap y CRUD.** <br/>
 En esta lección, aprenderá cómo usar estas poderosas estructuras de datos y cómo realizar operaciones CRUD en recipientes. CRUD significa Crear, Leer, Actualizar y Eliminar; esas son operaciones básicas que se pueden realizar en una base de datos y se utilizan para administrar datos en un almacenamiento persistente. Esto será crucial para trabajar en el proyecto principal.
 
 # 🧩 Motoko: tipos opcionales y genéricos y funciones de orden superior.
 ## 🫙 Tipo opcional
-En Motoko, como en muchos otros lenguajes de programación, existe un valor especial llamado "null" que representa la ausencia de un resultado. Esto es útil cuando se indica que una función no devolverá nada. El valor nulo es de tipo **Nulo** (y el tipo **Nulo** contiene solo un valor que es nulo). <br/> Por ejemplo, imagina que tienes un Array de nombres llamada "**nombres**" y una función llamada "**buscar_nombre**" que toma una lista de nombres como entrada y devuelve el primer índice tal que el nombre está en la Array en ese índice. Si no se encuentra el nombre, la función debe devolver "nulo" en lugar de un índice. De esta manera, la función indica que no encontró el nombre, ¡en lugar de producir un error!
+En Motoko, como en muchos otros lenguajes de programación, existe un valor especial llamado "null" que representa la ausencia de un resultado. Esto es útil cuando se indica que una función no devolverá nada. El valor nulo es de tipo **null** (y el tipo **null** contiene solo un valor que es nulo). <br/> Por ejemplo, imagina que tienes un Array de nombres llamada "**nombres**" y una función llamada "**buscar_nombre**" que toma una lista de nombres como entrada y devuelve el primer índice tal que el nombre está en la Array en ese índice. Si no se encuentra el nombre, la función debe devolver "null" en lugar de un índice. De esta manera, la función indica que no encontró el nombre, ¡en lugar de producir un error!
 
 Si escribimos lo siguiente:
 ```
@@ -37,7 +37,7 @@ does not have expected type
   Nat
 ```
 Esto se debe a que "null" no es del tipo **Nat**.
-Para indicarle a Motoko que una función puede devolver un valor **Nat** o "nulo", necesitamos una forma de expresar que el tipo de devolución de la función puede ser una de dos posibilidades. Esto se debe a que el valor de retorno específico de la función depende de la entrada que no conocemos de antemano, por lo que no podemos predecir si la función devolverá un **Nat** o "nulo" hasta que se ejecute realmente. <br/>
+Para indicarle a Motoko que una función puede devolver un valor **Nat** o "null", necesitamos una forma de expresar que el tipo de devolución de la función puede ser una de dos posibilidades. Esto se debe a que el valor de retorno específico de la función depende de la entrada que no conocemos de antemano, por lo que no podemos predecir si la función devolverá un **Nat** o "null" hasta que se ejecute realmente. <br/>
 
 Para expresar eso podemos usar un **tipo opcional**: "**?T**".
 En nuestro caso usaríamos "**?Nat**". Podemos reescribir nuestro código usando esta nueva notación:
@@ -55,7 +55,7 @@ public func find_name(name : Text) : async ?Nat {
 
 > El tipo opcional indicado por ? se puede usar con cualquier otro tipo y no se limita a **Nat**. Podemos tener **?Text**, **?Int**, **?Bool** y más...
 
-El tipo "opcional" se usa a menudo junto con el patrón "interruptor/carcasa" en Motoko. Este patrón le permite manejar un valor opcional y ejecutar diferentes partes de su código dependiendo de si el valor de entrada es "nulo" o no. En otras palabras, puede usar el patrón "cambiar/caso" para verificar si un valor opcional está presente o no, y luego realizar diferentes acciones en función de eso. Esto permite un código más elegante y seguro, ya que le permite manejar el caso en el que la entrada es nula y evitar cualquier comportamiento inesperado.
+El tipo "opcional" se usa a menudo junto con el patrón "interruptor/carcasa" en Motoko. Este patrón le permite manejar un valor opcional y ejecutar diferentes partes de su código dependiendo de si el valor de entrada es "null" o no. En otras palabras, puede usar el patrón "cambiar/caso" para verificar si un valor opcional está presente o no, y luego realizar diferentes acciones en función de eso. Esto permite un código más elegante y seguro, ya que le permite manejar el caso en el que la entrada es nula y evitar cualquier comportamiento inesperado.
 
 ```
 public func handle_null_value(n : ?Nat) : async Text {
@@ -71,7 +71,7 @@ public func handle_null_value(n : ?Nat) : async Text {
 };
 ```
 
-  mundo final en el tipo opcional: hay un módulo de la biblioteca Base llamado [Opción] (https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). Este módulo le permite realizar operaciones sobre valores opcionales.
+  mundo final en el tipo opcional: hay un módulo de la biblioteca Base llamado [Opción](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Bool). Este módulo le permite realizar operaciones sobre valores opcionales.
 
 <p align="center"> <img src="../../../daily_guides/day_3/img/option_module.png" width="800px" style="border: 2px solid black;"> </p>
 
@@ -164,7 +164,7 @@ Hasta ahora, todas las funciones que hemos escrito toman argumentos "simples" (*
 El [módulo Array](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array) en particular contiene varias funciones de orden superior; es por eso que lo usaremos como un fuente de ejemplos para esta sección.
 
 
-- [Buscar](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-find): esta función buscará cada elemento en la Array uno por uno, y use el "predicado" (una función o declaración separada) para decidir si es verdadero o falso. Cuando el predicado devuelve verdadero para un elemento en particular, la función devolverá ese elemento. Si ninguno de los elementos forma el return true, la función devolverá "nulo" (nada/sin valor).
+- [Find](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-find): esta función buscará cada elemento en la Array uno por uno, y use el "predicado" (una función o declaración separada) para decidir si es verdadero o falso. Cuando el predicado devuelve verdadero para un elemento en particular, la función devolverá ese elemento. Si ninguno de los elementos forma el return true, la función devolverá "null" (nada/sin valor).
      <p align="center"> <img src="../../../daily_guides/day_3/img/array_find.png" width="800px" style="border: 2px solid black;"> </p>
 
      Podemos usar esta función de la siguiente manera:
@@ -188,10 +188,10 @@ El [módulo Array](https://internetcomputer.org/docs/current/developer-docs/buil
      > Este ejemplo de código hace uso de los 3 nuevos conceptos que hemos discutido hoy: tipo opcional, tipo genérico y funciones de orden superior.
      <detalles>
          <summary> 🤔 ¿Qué crees que volverá <strong> mystere([8,4,5,18,0,2,3]) </strong> ? </resumen>
-         Debería devolver el primer valor que sea igual a 10 en la Array. Como no hay ninguno, devolverá <strong> nulo </strong>.
+         Debería devolver el primer valor que sea igual a 10 en la Array. Como no hay ninguno, devolverá <strong> null </strong>.
      </detalles>
 
-- Filtro: esta función tomará un Array, y para cada elemento de esa Array, utilizará el "predicado" (una función o declaración separada) para decidir si es verdadero o falso. Si el predicado devuelve verdadero para un elemento en particular, ese elemento se incluirá en la nueva Array; de lo contrario, se omitirá. La función creará una nueva Array que contiene solo los elementos que pasaron la prueba de predicado.
+- Filter: esta función tomará un Array, y para cada elemento de esa Array, utilizará el "predicado" (una función o declaración separada) para decidir si es verdadero o falso. Si el predicado devuelve verdadero para un elemento en particular, ese elemento se incluirá en la nueva Array; de lo contrario, se omitirá. La función creará una nueva Array que contiene solo los elementos que pasaron la prueba de predicado.
      <p align="center"> <img src="../../../daily_guides/day_3/img/array_filter.png" width="800px" style="border: 2px solid black;"> </p>
 
      Podemos usar esta función de la siguiente manera:
@@ -259,13 +259,13 @@ En este módulo, cubriremos cómo se puede acceder a los recipientes a través d
 ## 🌍 Acceder a un recipiente a través de un navegador
 Siempre que [acceda a un contenedor](https://wujxq-qqaaa-aaaaj-qazca-cai.raw.ic0.app/) a través de su navegador, hay algunos pasos necesarios. Repasemos todos ellos.<br/>
 Notará que las URL en la computadora de Internet tienen el siguiente formato:
-**<ID_DEPOSITO>.ic0.app**
+**<ID_CANISTER>.ic0.app**
 **.ic0.app** indica que se está comunicando con [nodos de límite]().
 ## ¿Qué son los nodos límite?
 Los recipientes se alojan en los nodos que participan en el consenso de IC. Sin embargo, los usuarios finales no pueden acceder directamente a esos nodos. <br/>
 Para proteger los nodos de consenso y mejorar el rendimiento, hay una capa de **nodos de límite** que sirven para diferentes propósitos útiles:
 
-- Traducir la solicitud HTTP del navegador del usuario a la llamada del recipiente. Esta parte se llama [Puerta de enlace HTTP] (https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway). Cuando los recipientes envían su respuesta, la puerta de enlace la convertirá de nuevo en una solicitud HTTP.
+- Traducir la solicitud HTTP del navegador del usuario a la llamada del recipiente. Esta parte se llama [Puerta de enlace HTTP](https://internetcomputer.org/docs/current/references/ic-interface-spec/#http-gateway). Cuando los recipientes envían su respuesta, la puerta de enlace la convertirá de nuevo en una solicitud HTTP.
 - Dirija las llamadas a la subred correcta que ejecuta el recipiente. Para enrutar correctamente esas llamadas, los nodos fronterizos deben realizar un seguimiento de toda la configuración de la computadora de Internet:
      - Lista de subredes.
      - Lista de nodos ya qué subred pertenecen.
@@ -293,11 +293,11 @@ Como dijimos anteriormente, hay dos formas de acceder a un bote:
 ¿Cuál es la diferencia?
 
 La URL **sin procesar** simplemente devolverá la solicitud tal como está para servir los archivos de activos (HTML, CSS, Javascript).
-Por otro lado, al presionar ic0.app, el nodo límite primero devolverá un **trabajador de servicio**. Esto es lo que se carga cada vez que ve esta página:
+Por otro lado, al presionar ic0.app, el nodo límite primero devolverá un **service worker**. Esto es lo que se carga cada vez que ve esta página:
 
 <p align="center"> <img src="../../../daily_guides/day_3/img/service_worker.png" width="800px" style="border: 2px solid black;"> </p>
 
-Una vez que el [trabajador de servicio] (https://www.npmjs.com/package/@dfinity/service-worker) está instalado, el trabajador de servicio maneja la solicitud. La gran ventaja del trabajador de servicio es que verificará el contenido que sirve el nodo. En ese caso, el canisgter firma directamente el contenido de los activos servidos (bajo la clave pública en el IC): el trabajador del servicio conoce la clave pública y es responsable de verificar que el contenido recibido coincida con la firma.
+Una vez que el [service worker](https://www.npmjs.com/package/@dfinity/service-worker) está instalado, el service worker maneja la solicitud. La gran ventaja del service worker es que verificará el contenido que sirve el nodo. En ese caso, el canisgter firma directamente el contenido de los activos servidos (bajo la clave pública en el IC): el service worker conoce la clave pública y es responsable de verificar que el contenido recibido coincida con la firma.
 
 > Acceder a una página web debe ser rápido, por lo que usamos llamadas de consulta para manejar eso. Sin embargo, las llamadas de consulta no pasan por consenso y no pueden crear firmas. Para resolver este problema, utilizamos variables certificadas. Esto significa que el contenido debe estar certificado antes de que ocurra la llamada, lo que puede causar problemas para algunos contenidos. Si la certificación no es posible y está accediendo bajo ic0.app, es posible que encuentre una página de error.
 
@@ -306,7 +306,7 @@ Una vez que el [trabajador de servicio] (https://www.npmjs.com/package/@dfinity/
 <p align="center" > En ese caso, debe acceder a raw.ic0.app para evitar el problema.</p>
 
 
-> Una última cosa: el trabajador del servicio recibido al acceder a **ic0.app** podría, en teoría, ser falsificado o manipulado para certificar respuestas no válidas. La mayoría de los usuarios no se tomarán la molestia de verificar el trabajador de servicio que se les brinda. La forma de resolver esto sería enviar la clave pública de la computadora de Internet directamente al hardware o al navegador. **¡Eso sería genial!**
+> Una última cosa: el service worker recibido al acceder a **ic0.app** podría, en teoría, ser falsificado o manipulado para certificar respuestas no válidas. La mayoría de los usuarios no se tomarán la molestia de verificar el service worker que se les brinda. La forma de resolver esto sería enviar la clave pública de la computadora de Internet directamente al hardware o al navegador. **¡Eso sería genial!**
 
 ## 🤙 Contactando con el bote.
 Una vez que el nodo límite ha recibido la solicitud. Lo codificará en Candid y llamará automáticamente al método ``` http_request``` del recipiente.
@@ -460,8 +460,8 @@ public type HttpResponse = {
      <p align="center"> <img src="../../../daily_guides/day_3/img/utf8_encode_decode.png" width="800px" style="border: 2px solid black;"> </p>
 
 - La transmisión por secuencias es un campo para manejar las respuestas HTTP en forma de transmisión, con la capacidad de devolver la llamada para obtener más datos utilizando la función de devolución de llamada definida. Se define de la siguiente manera:
-      ```
-    public type StreamingStrategy = {
+    ```
+     public type StreamingStrategy = {
             #Callback: {
                 callback : StreamingCallback;
                 token    : StreamingCallbackToken;
@@ -479,7 +479,8 @@ public type HttpResponse = {
             body  : Blob;
             token : ?StreamingCallbackToken;
         };
-    ```
+   ```
+    
 Algunas explicaciones:
 - **StreamingStrategy** es un tipo de objeto que tiene una sola propiedad, devolución de llamada, que es un objeto que contiene una función de devolución de llamada y un token.
 
@@ -488,10 +489,10 @@ Algunas explicaciones:
 Esto es extremadamente útil porque algunas páginas o archivos son demasiado grandes para procesarlos en un solo mensaje y, por lo tanto, se requiere el uso de StreamingStrategy.
 
 ## 👨‍🎤 SEO en la computadora de Internet
-Debido a las primeras versiones del trabajador de servicio, hubo un problema con [SEO] (https://developers.google.com/search/docs/fundamentals/seo-starter-guide) para dApps que se ejecutan al 100% en cadena. <br> De hecho, los rastreadores no pudieron cargar el contenido alojado en Internet Computer debido a una falla al cargar el service worker. Esto hizo que la vista previa en el motor de búsqueda no estuviera disponible.
+Debido a las primeras versiones del service worker, hubo un problema con [SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) para dApps que se ejecutan al 100% en cadena. <br> De hecho, los rastreadores no pudieron cargar el contenido alojado en Internet Computer debido a una falla al cargar el service worker. Esto hizo que la vista previa en el motor de búsqueda no estuviera disponible.
 
 <p align="center"> <img src="../../../daily_guides/day_3/img/preview_error.png" width="600px" style="border: 2px solid black;"> </p>
-<p align="center"> En lugar de ver la vista previa del contenido, solo vería la carga del trabajador del servicio: aburrido...</p>
+<p align="center"> En lugar de ver la vista previa del contenido, solo vería la carga del service worker: aburrido...</p>
 
 Las nuevas versiones de los nodos de límite han solucionado este problema y las dApps que se ejecutan al 100 % en la cadena se pueden indexar como sitios web tradicionales.
 
@@ -526,7 +527,7 @@ segundo_máximo(Array: [Int]) -> Int;
 ```
 2. En su archivo llamado `utils.mo`: cree una función llamada `remove_even` que tome un Array [Nat] y devuelva una nueva Array con solo los números impares de la Array original.
 ```
-remove_event(Array: [Nat]) -> [Nat];
+remove_even(Array: [Nat]) -> [Nat];
 ```
 3. En su archivo llamado `utils.mo`: escriba una función `drop` <T> que tome 2 parámetros: un Array [T] y un **Nat** n. Esta función caerá los n primeros elementos del Array y devuelve el resto.
 > ⛔️ No utilices bucle.
@@ -542,7 +543,7 @@ drop<T> : (xs : [T], n : Nat) -> [T]
 7. En `main.mo` cree una función llamada `add_book` que tome un libro como parámetro y no devuelva nada. Esta función debería agregar este libro a su lista. Luego cree una segunda función llamada `get_books` que no tome ningún parámetro pero devuelva un **Array** que contenga todos los libros almacenados en la lista.
 
 # Recursos y enlaces útiles 🔗
-- [Trabajador de servicio personalizado](https://internetcomputer.org/docs/current/developer-docs/deploy/custom-domain#creating-the-custom-service-worker): un tutorial sobre cómo configurar su propio servicio trabajador, que puede ser útil si desea tener una buena URL.
+- [service worker personalizado](https://internetcomputer.org/docs/current/developer-docs/deploy/custom-domain#creating-the-custom-service-worker): un tutorial sobre cómo configurar su propio servicio trabajador, que puede ser útil si desea tener una buena URL.
 - [Los contratos inteligentes sirven a la Web](https://internetcomputer.org/how-it-works/smart-contracts-serve-the-web/): más información y recursos sobre cómo los recipientes sirven a los navegadores web.
 - [SEO en IC](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33): consulte este tutorial para obtener sugerencias y consejos sobre cómo configurar correctamente su sitio web en el IC para obtener la máxima visibilidad y accesibilidad.
 - [Variables certificadas](https://www.youtube.com/watch?v=3mZHEfICi_U): un video que explica todo lo que necesita saber sobre las variables certificadas, por grandes cerebros en DFINITY.
