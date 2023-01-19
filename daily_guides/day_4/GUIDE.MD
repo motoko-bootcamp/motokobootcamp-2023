@@ -101,6 +101,41 @@ A subaccount is also a large integer (which could also be represented as a 32-by
 
 For any Principal, we refer to the account which corresponds to the subaccount which is equal to 0 as the default account of that principal. If you wanted to generate another account for that Principal, then you could use the subaccount which is equal to 1 to generate another Account. You could even pick any random 32-byte number, and then use it to get an account which coudl be controlled by that Principal. There are a lot of Accounts which could be generated for a Principal, because a 32-bit unsigned integer has a maximum value of 4,294,967,295.
 
+### Principal to Account
+A canister has it's own Principal, and it often needs to store and control assets (such as tokens or NFTs) on behalf of users (who also have their own Principal).
+
+A common practice is to convert the Principal of a user into a subaccount, then to use that subaccount to derive an Account (unique to that user) which the canister can control.
+
+Don't worry about understand this logic right now, but here is the example of a helper function which is commonly used to turn the Principal of a user into a subaccount (in this example it's representing the subaccount as a Blob).
+```
+  public type Subaccount = Blob;
+
+  public func principalToSubaccount(principal: Principal) : Blob {
+      let idHash = SHA224.Digest();
+      idHash.write(Blob.toArray(Principal.toBlob(principal)));
+      let hashSum = idHash.sum();
+      let crc32Bytes = beBytes(CRC32.ofArray(hashSum));
+      let buf = Buffer.Buffer<Nat8>(32);
+      let blob = Blob.fromArray(Array.append(crc32Bytes, hashSum));
+
+      return blob;
+  };
+```
+
+Then another helper function could be used to combine this subaccount with a Principal (such as the canister's principal) to create an Account (again, don't worry about understanding this logic right now).
+```
+  public func accountIdentifier(principal: Principal, subaccount: Subaccount) : AccountIdentifier {
+    let hash = SHA224.Digest();
+    hash.write([0x0A]);
+    hash.write(Blob.toArray(Text.encodeUtf8("account-id")));
+    hash.write(Blob.toArray(Principal.toBlob(principal)));
+    hash.write(Blob.toArray(subaccount));
+    let hashSum = hash.sum();
+    let crc32Bytes = beBytes(CRC32.ofArray(hashSum));
+    Blob.fromArray(Array.append(crc32Bytes, hashSum))
+  };
+```
+
 ### Useful documentation
 * Account.mo example (useful helper functions for back end)
 * Account.js example (useful helper functions for front end)
