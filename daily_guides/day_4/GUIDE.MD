@@ -124,7 +124,7 @@ There are (5) classes of Principals, but we only need to focus on (3). If you ar
     };
     
   };
-```motoko
+```
 * **Anonymous id** is `0x04`, an this is the "default caller" encountered when an unauthenticated user calls functions. For example, if information from a canister needs to be presented on a webpage before the user logs in, you'd call functions to fetch this information and your canister would see that the caller is the Anonymous id (because we don't know the user's Principal until they log in). The [Motoko Base Library includes an `isAnonymous` function](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Principal#function-isanonymous) you can use to check if the caller is authenticated or not.
 
 ## Receiving assets with a Principal (Default Subaccount)
