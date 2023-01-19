@@ -416,7 +416,7 @@ get_usernames : () -> async [(Principal, Text)];
 # Useful resources & links 🔗
 - Account.mo [TODO]
 - Account.js [TODO]
-- Principal base library documentation](https://internetcomputer.org/docs/current/references/motoko-ref/Principal)
+- [Principal base library documentation](https://internetcomputer.org/docs/current/references/motoko-ref/Principal)
 - [Principal interface documentation](https://internetcomputer.org/docs/current/references/ic-interface-spec#principal) 
 - [Verifying upgrade compatibility](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/compatibility)
 - [Managing Canisters](https://internetcomputer.org/docs/current/developer-docs/build/project-setup/manage-canisters#upgrade-a-canister)
