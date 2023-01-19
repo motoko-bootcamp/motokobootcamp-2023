@@ -42,7 +42,7 @@ You can find the guides for the different days:
 Lectures will be held live on Zoom Webinar by mentors (each mentor is an experienced member of the community who is actively contributing to the ecosystem).
 Each lecture will cover one specific topic.
 
-You can take a look at the **<a href="https://discord.com/channels/936722757692047470/1063468537852743761/1063481722949353494" target="\_blank"> list of lectures.</a>**.
+You can take a look at the **<a href="https://discord.com/channels/936722757692047470/1063468537852743761/1063481722949353494" target="\_blank"> list of lectures.</a>**
 <br/>
 
 You can also view the full **<a href="https://calendar.google.com/calendar/embed?src=e0a9c944a17afc070ed77f9f10688eaac557ebd0251c5e6d0b724253506d43b3%40group.calendar.google.com" target="\_blank"> Motoko Bootcamp Calendar </a>**.
