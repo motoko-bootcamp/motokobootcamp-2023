@@ -1,9 +1,9 @@
 # Day 4 🐔
-Welcome to Day 4 of the Motoko Bootcamp! If you've been that far you're already an hero!
+Welcome to Day 4 of the Motoko Bootcamp! If you've been that far you're already an hero 🦸
 <br/> We hope you are all making progress, learning new skills and not suffering too much. 
 In the next few days you should spend more & more time into the core project - that's why the coding challenges & questions will be less important in this guide and the followings. <br/>
 
-Today, we'll be diving deeper into more advanced topics in Motoko such as working with Buffers, using TrieMap for efficient data storage, understanding Principals & Account Identifiers, and the issue when upgrading a canister.
+Today, we'll be diving deeper into more advanced topics in Motoko such as working with Buffers, using HashMap/TrieMap for data storage, understanding Principals & Account Identifiers, and discussing the issues when upgrading a canister.
 
 ## 🧩 Motoko: a few more datastructures: List, Buffer & TrieMap.
 We have manipulated a lot of **Array** during the past few days. Since arrays have fixed sizes in Motoko they are not very efficient data structures when it comes to adding elements. 
