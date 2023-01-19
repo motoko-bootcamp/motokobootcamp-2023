@@ -19,7 +19,7 @@ This type is often used with **if** conditions to make your code adaptative to d
 if(true){
  // Do this
 } else {
-// Do that
+ // Do that
 }
 ```
 Those conditions are also often combined with relational operators such as:
@@ -35,7 +35,7 @@ Those conditions are also often combined with relational operators such as:
     ```
     > The "**==**" operator is different than the "**=**" operator. The first one will test if two values are equal while the later will assign a value to a variable.
 
-- The "**<**" (less than) and ""**>**" (more than) operator.
+- The "**<**" (less than) and "**>**" (more than) operator.
   ```
   3 < 5     //true
   6 < 2     //false
@@ -97,8 +97,8 @@ In Motoko, arrays are immutable by default, just like variables declared with "*
 The following code would throw an error:
 ```
 actor {
-let dates : [Nat] = [1, 3, 6];
-dates[0] := 5;
+  let dates : [Nat] = [1, 3, 6];
+  dates[0] := 5;
 };
 ```
 > **Error in file Main.mo:2:0 expected mutable assignment target**
@@ -112,7 +112,7 @@ This time the following code would compile:
 ```
 actor {
   let mutable_dates : [var Nat] = [1, 3, 6];
-  dates[0] := 5;
+  mutable_dates[0] := 5;
 };
 ```
 > Note that mutable and immutable arrays do not have the same type.
@@ -139,18 +139,18 @@ In Motoko - we can loop over an array with the following syntax:
 ```
 actor {
     let array : [Nat] = [1, 2, 3, 4, 5];
-    var somme : Nat = 0;
+    var sum : Nat = 0;
 
     public func somme_array() : async Nat {
         for (value in array.vals()){
-          somme := somme + value;
+          sum := sum + value;
         };
-       return somme; 
+       return sum; 
     };
 };
 ```
 
-> In regard of what we said earlier: it may seem confusing that a mutable variable, "**somme**", is returned at the end of the function. However, it's important to understand the difference between sharing the variable itself and sharing the value of the variable. In this case, it's the value of "**somme**" that is shared and not the variable itself. This concept can also be applied to mutable arrays by using a method called '**Freeze**', which allows for sharing a "snapshot" of the array, rather than the variable itself.
+> In regard of what we said earlier: it may seem confusing that a mutable variable, "**sum**", is returned at the end of the function. However, it's important to understand the difference between sharing the variable itself and sharing the value of the variable. In this case, it's the value of "**sum**" that is shared and not the variable itself. This concept can also be applied to mutable arrays by using a method called '**Freeze**', which allows for sharing a "snapshot" of the array, rather than the variable itself.
 
 ## 📚 The Base library
 So far we've only looked at operations that are built-in to the language. To perform more complex operations, we'll need to use modules, particularly the [Base library](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts#the-motoko-base-library).
@@ -377,7 +377,7 @@ You can consider that you've finished the task for today when you have completed
 
 1. Who controls the ledger canister? 
 2. What is the subnet of the canister with the id: **mwrha-maaaa-aaaab-qabqq-cai**? How much nodes are running this subnet?  
-3. I have a neuron with 1O ICPs locked with a dissolve delay of 4 years - my neuron has been locked for 2 years. What is my expected voting power?
+3. I have a neuron with 10 ICPs locked with a dissolve delay of 4 years - my neuron has been locked for 2 years. What is my expected voting power?
 4. What is wrong with the following code?
 ```
 actor {
