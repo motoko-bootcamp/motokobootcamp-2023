@@ -42,8 +42,8 @@ does not have the expected type
 This is because "null" is not of type **Nat**. 
 To indicate that a function may return either a **Nat** value or "null", we need a way to express that the function's return type can be one of two possibilities. This is because the specific return value of the function depends on the input that we don't know in advance, so we can't predict if the function will return a **Nat** or "null" until it is executed. <br/>
 
-To express that we can use an **optional type**: "**?T**". 
-In our case, we would use "**?Nat**". We can rewrite our code using this new notation:
+To express that we can use an **optional type**: `?T`. 
+In our case, we would use `?Nat`. We can rewrite our code using this new notation:
 ```motoko
 let names : [Text] = ["Motoko", "Rust", "JavaScript", "TypeScript"];
 public func find_name(name : Text) : async ?Nat {
@@ -84,11 +84,9 @@ For instance,  you can use the "**Option.get**" function to unwrap an optional v
 ```c
 import Option "mo:base/Option";
 actor {
-
     public func always_return_a_nat(n : ?Nat) : async Nat {
         return(Option.get(n, 0))
     };
-
 }
 ```
 
@@ -111,9 +109,9 @@ Will return:
 (0 : nat)
 ```
 ## 👤 Generic Type
-In the previous section, we briefly introduced the concept of "**generic type**" with the notation "**?T**". Now, let's dive deeper and explore the exciting world of generics.
+In the previous section, we briefly introduced the concept of "**generic type**" with the notation `?T`. Now, let's dive deeper and explore the exciting world of generics.
 
-A generic type, usually written as "T", allows you to write functions and code that can adapt to different types. When we talk about "**T**" in programming, it refers to "whatever type you want".
+A generic type, usually written as `T`, allows you to write functions and code that can adapt to different types. When we talk about "**T**" in programming, it refers to "whatever type you want".
 This means that you can create a single function or class that can handle multiple types of inputs or data, without having to write separate code for each type.
 
 Let's imagine we have a task at hand - to determine if the size of an array is even or not. We're going to write a function called "**is_array_size_even**" that takes an array as an input and returns a Boolean value indicating whether the size of that array is even or not.
@@ -131,7 +129,7 @@ public func is_array_size_even(array : [Nat]) : async Bool {
 ```
 This function works as intended, but it's limited to arrays filled with **Nat**. So, what if we want to check the size of an array filled with **Text** or **Int**?
 
-One approach would be to create a separate function for each possible type of array, like "**_is_array_size_even_nat**", "**_is_array_size_even_text**", "**_is_array_size_even_int**". But as you can imagine, this quickly becomes hard to manage and maintain.
+One approach would be to create a separate function for each possible type of array, like "**is_array_size_even_nat**", "**is_array_size_even_text**", "**is_array_size_even_int**". But as you can imagine, this quickly becomes hard to manage and maintain.
 
 A better solution is to utilize the power of generics. With generics, we can write a single function that works for any type of array. It's a more elegant and efficient way to solve the problem. So, let's embrace our new friend - generics - and make our code more dynamic and flexible!
 ```motoko
@@ -147,7 +145,7 @@ func is_array_size_even<T>(array : [T]) : Bool {
 
 >Notice the "**\<T>**" following the name of the function. It means that this function now depends on the type of T.
 
-When using the "**array_size**" function, it's important to remember that you'll need to specify the type of array you're using it on. 
+When using the "**is_array_size_even**" function, it's important to remember that you'll need to specify the type of array you're using it on. 
 ```motoko
 func is_array_size_even<T>(array : [T]) : Bool {
     let size = array.size();
