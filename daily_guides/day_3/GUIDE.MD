@@ -252,7 +252,7 @@ let f = func (x : Nat) : Nat {
 ##  Prerequisites
 If you are not familiar with HTTP, make sure to [watch this video](https://www.youtube.com/watch?v=iYM2zFP3Zn0) before reading further. 
 
-## 👍 HTTP request vs HTPP outcalls
+## 👍 HTTP request vs HTTP outcalls
 In this module, we will cover how canisters can be accessed through HTTP requests. This is a separate topic from the "HTTP Outcalls" lecture, which is planned for Day 5.
 
 **HTTP Request**: Canisters can handle incoming requests and serve web pages. <br/>
@@ -262,7 +262,8 @@ In this module, we will cover how canisters can be accessed through HTTP request
 Whenever you [access a canister](https://wujxq-qqaaa-aaaaj-qazca-cai.raw.ic0.app/) through your browser there are a few steps involved. Let's go through all of them.<br/>
 You will notice that URLs on the Internet Computer are of the following form: 
 **<CANISTER_ID>.ic0.app**
-The **.ic0.app** indicates that you are reaching out to [boundary nodes](). 
+The **.ic0.app** indicates that you are reaching out to [boundary nodes](https://github.com/motoko-bootcamp/motokobootcamp-2023/blob/main/daily_guides/day_3/GUIDE.MD#what-are-boundary-nodes).
+
 ## What are boundary nodes?
 Canisters are hosted in the nodes that participate in the IC consensus. However, those nodes are not directly accessible by end users. <br/>
 To protect the consensus nodes & improve performance there is a layer of **boundary nodes** which serve different useful purposes:
@@ -272,7 +273,7 @@ To protect the consensus nodes & improve performance there is a layer of **bound
     - List of subnets.
     - List of nodes and which subnet they belong to.
     - The canisters run by each subnet. 
-- Load balancing among the subnet's replica nodes (i.e if a replica is lacking behind and has already a lot of work on its plate - boundary nodes will send the request to another replica).
+- Load balancing among the subnet's replica nodes (i.e if a replica is lagging behind and has already a lot of work on its plate - boundary nodes will send the request to another replica).
 - Protect subnets from DDoS attacks.
 
 <i> Currently, boundary nodes are run by the DFINITY Foundation. However, the objective (as part of the roadmap) is to have anyone able to set up and run a boundary nodes. This will make interaction with the Internet Computer more reactive for end users and this will make the platform more robust to censorship. You can read more in [the dedicated topic](https://forum.dfinity.org/t/boundary-node-roadmap/15562) if you are interested. </i>
@@ -280,10 +281,10 @@ To protect the consensus nodes & improve performance there is a layer of **bound
 <p align="center"> <img src="./img/http_gateway.png" width="800px" style="border: 2px solid black;"> </p>
 
 ## 📦 Asset canister
-To serve web content on the Internet Computer, a canister should have a method that can handle an http request, which includes the URL, http method, and headers, and produce an HTTP response, consisting of a status, headers, and body. There are two ways to go about that:
+To serve web content on the Internet Computer, a canister should have a method that can handle an http request, which includes the URL, HTTP method, and headers, and produce an HTTP response, consisting of a status, headers, and body. There are two ways to go about that:
 
 - Implement the http_request method and all associated logic yourself (in Motoko). This is what will be doing for our **webpage** canister.
-- Use the provided **asset** canister: this is a special canister whose code has been already implemented by DFINITY. You need to specify the type of this canister in dfx.json & add the source folder of your web app. Once the asset canister is deployed on the Internet Computer the website can be accessed at http://<canister id>.ic0.app and http://<canister id>.raw.ic0.app. This is what we will use for our **interface** canister. The frontend canister that is shipped when you deploy a project with `dfx new <project>` is an asset canister (as you can confirm by looking at `dfx.json`).
+- Use the provided **asset** canister: this is a special canister whose code has been already implemented by DFINITY. You need to specify the type of this canister in `dfx.json` & add the source folder of your web app. Once the asset canister is deployed on the Internet Computer the website can be accessed at `http://<canister id>.ic0.app` and `http://<canister id>.raw.ic0.app`. This is what we will use for our **interface** canister. The frontend canister that is shipped when you deploy a project with `dfx new <project>` is an asset canister (as you can confirm by looking at `dfx.json`).
 
 You can access [the source code for this canister written in Rust](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-frontend-canister) under the [DFINITY organization](https://github.com/dfinity).  
 
@@ -311,7 +312,7 @@ Once the [service worker](https://www.npmjs.com/package/@dfinity/service-worker)
 > One last thing: the service worker received when accessing **ic0.app** could in theory be faked or manipulated to certify invalid responses. Most users won't go through the trouble of verifying the service worker that is served to them. The way to solve this would be to have the public key of the Internet Computer directly shipped into the hardware or the browser. **That would be pretty dope!**  
 
 ## 🤙 Contacting the canister.
-Once the boundary node has received the request. It will encode it into Candid and automatically call the``` http_request``` method of the canister.
+Once the boundary node has received the request. It will encode it into Candid and automatically call the ```http_request``` method of the canister.
 reachable by browsers, you need to implement an ``http_request``method as part of the public interface of your actor!
 
 <p align="center"> <img src="./img/http_request_public_interface.png" width="600px" style="border: 2px solid black;"> </p>
