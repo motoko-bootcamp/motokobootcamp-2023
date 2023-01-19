@@ -44,11 +44,14 @@ Some of you may be wondering why certain wallets (such as Plug) give you the opt
 However, not every wallet provider does this conversion from Principal to default account. To make things even more complicated, there are some types of assets that use a standard which actually associates assets to Principals instead of Accounts. Using the ICP Ledger is optional, the creator of a token or NFT canister is free to implement their own ledger. In short, be careful when transferring ICP assets to use the right type of id (Principal or Account). 
 
 ## Getting a caller’s Principal
-The easiest way to explain the syntax for getting the caller of a function is to show a few examples.
+To get the Principal that is calling a function, all you have to do is add `shared ({ caller })` when declaring your function, and then within your function you can use the `caller` variable (which will be the Principal of whatever is calling that function). This syntax is added immediately before `func` and it can even be added before `actor` (to get the Principal which deployed the canister).
 
 Here's an example of a function that traps with an error if it's called by a canister (using the helper function defined above), but returns "Hello human!" otherwise.
 ```
+  import Bool         "mo:base/Bool";
+  import Principal    "mo:base/Principal";
   import Text         "mo:base/Text";
+  
   import Helpers      "helpers";
 
   actor {
@@ -58,13 +61,35 @@ Here's an example of a function that traps with an error if it's called by a can
       return "Hello human!";
     };
     
-    private func _isCanister(caller : Principal) : Bool {
-      return Helpers.isCanisterPrincipal(caller);
+    private func _isCanister(p : Principal) : Bool {
+      return Helpers.isCanisterPrincipal(p);
     };
   
   };
 ```
 
-Here is an example of a function that returns true if the caller is the Principal who deployed the 
+Here is an example of a function that returns `true` if the caller is the Principal who deployed the canister, or `false` otherwise.
+```
+  import Bool         "mo:base/Bool";
+  import Principal    "mo:base/Principal";
+
+  // Here you get the Principal which deployed the canister, and set it as a variable called 'creator'
+  shared ({ caller = creator }) actor {
+
+    // Here you define a stable variable called 'master' to save the value of 'creator' to the state of your canister.
+    stable var master : Principal = creator;
+
+    // Here you get the Principal calling this function, and then you check to see if it is equal to 'master'
+    public shared ({ caller }) func isMaster() : async Bool {
+      if (caller == master) {
+        return true;
+      };
+      return false;
+  };
+```
 
 ### Useful documentation
+* Account.mo example (useful helper functions for back end)
+* Account.js example (useful helper functions for front end)
+* [Principal base library documentation](https://internetcomputer.org/docs/current/references/motoko-ref/Principal)
+* [Principal interface documentation](https://internetcomputer.org/docs/current/references/ic-interface-spec#principal) (this information is deeper than you need to go for now, but it is good to know where it is)
