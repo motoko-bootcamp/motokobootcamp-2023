@@ -404,9 +404,6 @@ actor {
       usernames.put(caller, name);
     };
 
-    public query func get_usernames() : async [(Principal, Text)] {
-      return(Iter.toArray(usernames.entries()));
-    };
 
 };
 ```
