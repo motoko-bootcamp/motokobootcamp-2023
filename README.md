@@ -33,7 +33,7 @@ You can find the guides for the different days:
 - [Day 1️⃣](./daily_guides/day_1/GUIDE.MD) [RELEASED]
 - [Day 2️⃣](./daily_guides/day_2/GUIDE.MD) [RELEASED]
 - [Day 3️⃣](./daily_guides/day_3/GUIDE.MD) [RELEASED]
-- [Day 4️⃣](./daily_guides/day_4/GUIDE.MD) [RELEASE: 19th 9AM UTC]
+- [Day 4️⃣](./daily_guides/day_4/GUIDE.MD) [RELEASED]
 - [Day 5️⃣](./daily_guides/day_5/GUIDE.MD) [RELEASE: 20th 9AM UTC]
 - [Day 6️⃣](./daily_guides/day_6/GUIDE.MD) [RELEASE: 21th 9AM UTC]
 - [Day 7️⃣](./daily_guides/day_7/GUIDE.MD) [RELEASE: 22th 9AM UTC]
