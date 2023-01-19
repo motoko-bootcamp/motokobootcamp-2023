@@ -193,7 +193,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
         It should return the first value that is equal to 10 in the array. Since there is none it will return <strong> null </strong>.
     </details>
 
-- Filter: this function will take an array, and for every element in that array, it will use the "predicate" (a separate function or statement) to decide if it is true or false. If the predicate returns true for a particular element, that element will be included in the new array, otherwise, it will be skipped. The function will create a new array containing only the elements that passed the predicate test.
+- [Filter](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-filter): this function will take an array, and for every element in that array, it will use the "predicate" (a separate function or statement) to decide if it is true or false. If the predicate returns true for a particular element, that element will be included in the new array, otherwise, it will be skipped. The function will create a new array containing only the elements that passed the predicate test.
     <p align="center"> <img src="./img/array_filter.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
@@ -218,7 +218,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
        An array where only values below 10 are kept (the order is not modified)  : <strong> [1, 8, 2] </strong>.
     </details>
 
-- Map: this function will take an array and a function 'f' that maps the elements of the array of type X to another type Y. This function will apply this function to each element in the original array and create a new array with the result of the function f applied to each element. The new array will have the same order as the original array.
+- [Map](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Array#function-map): this function will take an array and a function 'f' that maps the elements of the array of type X to another type Y. This function will apply this function to each element in the original array and create a new array with the result of the function f applied to each element. The new array will have the same order as the original array.
     <p align="center"> <img src="./img/array_map.png" width="800px" style="border: 2px solid black;"> </p>
 
     We can use this function as in the following:
@@ -235,7 +235,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
     };
     ```
     <details>
-         <summary > 🤔 What do you think riddle <strong> ([1, 2, 3, 4]) </strong> will return? 
+         <summary > 🤔 What do you think riddle<strong>([1, 2, 3, 4]) </strong> will return? 
          </summary>
           An array where all values have been increased by one (the order is not modified)  : <strong> [2, 3, 4, 5] </strong>.
     </details>
