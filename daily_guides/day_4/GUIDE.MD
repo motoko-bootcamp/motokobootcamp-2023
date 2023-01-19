@@ -122,8 +122,10 @@ Don't worry about understand this logic right now, but here is the example of a 
   };
 ```
 
-Then another helper function could be used to combine this subaccount with a Principal (such as the canister's principal) to create an Account (again, don't worry about understanding this logic right now).
+Then another helper function could be used to combine this subaccount with a Principal (such as the canister's principal) to create an Account which is represented as a Blob (again, don't worry about understanding this logic right now).
 ```
+  public type AccountIdentifier = Blob;
+  
   public func accountIdentifier(principal: Principal, subaccount: Subaccount) : AccountIdentifier {
     let hash = SHA224.Digest();
     hash.write([0x0A]);
@@ -133,6 +135,30 @@ Then another helper function could be used to combine this subaccount with a Pri
     let hashSum = hash.sum();
     let crc32Bytes = beBytes(CRC32.ofArray(hashSum));
     Blob.fromArray(Array.append(crc32Bytes, hashSum))
+  };
+```
+
+Now we could use these Helper functions to create a unique ICP deposit Address for a user (which in this case is represented as a Blob).
+```
+  import Principal    "mo:base/Principal";
+  import Text         "mo:base/Text";
+
+  import Helpers      "helpers";
+  
+  // This syntax gives you a 'this' variable which the canister can use to get it's own Principal
+  shared actor class ExampleCanister() = this {
+  
+    // Uses the Principal 'fromActor' value from the base library to store the canister's Principal to a 'canisterPrincipal' variable
+    let canisterPrincipal : Principal = Principal.fromActor(this);
+  
+    public type AccountIdentifier = Blob;
+    public type Subaccount = Blob;
+    
+    public shared ({ caller }) func getAddress() : async AccountIdentifier {
+      // Returns a account derived from the canister's Principal and a subaccount. The subaccount is being derived from the caller's Principal.
+      return Helpers.accountIdentifier(canisterPrincipal, Helpers.principalToSubaccount(caller));
+    };
+    
   };
 ```
 
