@@ -209,7 +209,7 @@ The [Array module](https://internetcomputer.org/docs/current/developer-docs/buil
             };
         };
 
-        public func surprise(array : [Nat]) : async ?Nat {
+        public func surprise(array : [Nat]) : async [Nat] {
             return(Array.filter<Nat>(array, f));
         };
     };
