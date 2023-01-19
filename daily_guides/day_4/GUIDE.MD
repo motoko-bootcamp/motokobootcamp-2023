@@ -12,7 +12,7 @@ In that case the recommended data structures are: **List** or **Buffer** and a m
 ## List
 List in Motoko are defined as purely-functional, singly-linked lists. 
 
-```
+```motoko
 public type List<T> = ?(T, List<T>);
 ```
 A **List** of is an (optional) couple of two elements:
@@ -20,7 +20,7 @@ A **List** of is an (optional) couple of two elements:
 - The 2nd element is a List of type T.
 
 A linked list has a dynamic size and it is really easy and efficient to add elements to it using the following syntax:
-```
+```motoko
 import List "mo:base/List";
 actor {
   var list : List.List<Nat> = List.nil<Nat>();
@@ -35,7 +35,7 @@ After having suffered for the past few days using **Array** in Motoko you'll lov
 > Buffer are implemented with an underlying array that will grow/reduce as needed to accomodate for the number of elements added in the buffer. More information in the [Buffer](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Buffer) documentation.  
 
 To define a new buffer - you have to specify an initial size and the type of elements in the buffer:
-```
+```motoko
 import Buffer "mo:base/Buffer";
 actor {
 
@@ -44,15 +44,18 @@ actor {
 ```
 
 Since **Buffer** are defined as classes - they have a nice interface to work with you can call methods on it such as:
-- .add: will add an element to the end of the buffer.
-```
+- .add(): will add an element to the end of the buffer.
+```motoko
 my_buffer.add(4);
 ```
-- .size: returns the number of elements in the buffer.
-```
+- .size(): returns the number of elements in the buffer.
+```motoko
 let s = my_buffer.size(); //1
 ```
-- .clear: will remove all values from the buffer.
+- .clear(): will remove all values from the buffer.
+```motoko
+my_buffer.clear(); //1
+```
 
 > One drawback of having defined Buffer as a class is that contrary to Array they can't be defined as stable structure by default. Which requires some additional work when upgrading your canister - more on that later.
 
@@ -65,7 +68,7 @@ They both represent a key/value store:
 This is how you would instantiate your first HashMap, with **Keys** of type **Principal** and value of type **Name**. 
 In the following code you can also see a method to add elements & another one that returns an array that contains all the values of the HashMap.
 
-```
+```motoko
 import HashMap "mo:base/HashMap";
 import Iter "mo:base/Iter";
 import Principal "mo:base/Principal";
@@ -106,7 +109,7 @@ A Principal is a unique and authenticated actor who can call canister functions 
 There are (5) classes of Principals, but we only need to focus on (3). If you are curious about the other classes, you can find the [full documentation here](https://internetcomputer.org/docs/current/references/ic-interface-spec#id-classes).
 * **Self-authenticating ids** are external users with private key. This would be tpyically be users of your dapp who sign in using a wallet or identity service. These Principals are 29 bytes long.
 * **Opaque ids** are the class of Principals used for canisters. Specifically, canister Principals are shorter than user Principals and they end with "-cai". You could write yourself a helper function to identity is a Principal is a canister Principal using something like this:
-```
+```motoko
   import Bool         "mo:base/Bool";
   import Principal    "mo:base/Principal";
   import Text         "mo:base/Text";
@@ -125,7 +128,7 @@ There are (5) classes of Principals, but we only need to focus on (3). If you ar
     };
     
   };
-```
+```motoko
 * **Anonymous id** is `0x04`, an this is the "default caller" encountered when an unauthenticated user calls functions. For example, if information from a canister needs to be presented on a webpage before the user logs in, you'd call functions to fetch this information and your canister would see that the caller is the Anonymous id (because we don't know the user's Principal until they log in). The [Motoko Base Library includes an `isAnonymous` function](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Principal#function-isanonymous) you can use to check if the caller is authenticated or not.
 
 ## Receiving assets with a Principal (Default Subaccount)
@@ -137,7 +140,7 @@ However, not every wallet provider does this conversion from Principal to defaul
 To get the Principal that is calling a function, all you have to do is add `shared ({ caller })` when declaring your function, and then within your function you can use the `caller` variable (which will be the Principal of whatever is calling that function). This syntax is added immediately before `func` and it can even be added before `actor` (to get the Principal which deployed the canister).
 
 Here's an example of a function that traps with an error if it's called by a canister (using the helper function defined above), but returns "Hello human!" otherwise.
-```
+```motoko
   import Bool         "mo:base/Bool";
   import Principal    "mo:base/Principal";
   import Text         "mo:base/Text";
@@ -159,7 +162,7 @@ Here's an example of a function that traps with an error if it's called by a can
 ```
 
 Here is an example of a function that returns `true` if the caller is the Principal who deployed the canister, or `false` otherwise.
-```
+```motoko
   import Bool         "mo:base/Bool";
   import Principal    "mo:base/Principal";
 
@@ -197,7 +200,7 @@ A canister has it's own Principal, and it often needs to store and control asset
 A common practice is to convert the Principal of a user into a subaccount, then to use that subaccount to derive an Account (unique to that user) which the canister can control.
 
 Don't worry about understand this logic right now, but here is the example of a helper function which is commonly used to turn the Principal of a user into a subaccount (in this example it's representing the subaccount as a Blob).
-```
+```motoko
   public type Subaccount = Blob;
 
   public func principalToSubaccount(principal: Principal) : Blob {
@@ -229,7 +232,7 @@ Then another helper function could be used to combine this subaccount with a Pri
 ```
 
 Now we could use these Helper functions to create a unique ICP deposit Address for a user (which in this case is represented as a Blob).
-```
+```motoko
   import Principal    "mo:base/Principal";
   import Text         "mo:base/Text";
 
@@ -265,7 +268,7 @@ When a canister is upgraded, the state is lost by default. This means all data a
 ### Stable types
 Simple data types like Nat, Int and Text can be made stable variables, which mean their state will persist a canister upgrade, just by adding _stable_ to the declaration of the variable:
 
-```
+```motoko
 actor MyActor {
 
   stable var state : Int = 0;
@@ -281,7 +284,7 @@ The value of the variable `state` will persist an upgrade, and not be lost.
 ### Non-stable types
 More complex data types like Hashmap are not stable types. This doesn't mean their values can't persist after an upgrade, it just means their persistance must be handled manually. Fortunately the functions `` and `` 
 
-```
+```motoko
 actor MyActor {
 
   stable var entries : [(Text, Nat)] = [];
@@ -313,13 +316,13 @@ This code snippet shows how the state of a HashMap can persist an upgrade, by se
 ### Candid changes
 Changes to a Motoko function may change the Candid interface, and that could potentially break the application. So when upgrading the canister, consider how the changes can impact the Candid interface. Even small changes to the Motoko code can have great impact on the Candid interface, and potentially break the dapp. Consider this example:
 
-```
+```motoko
 actor {
   stable var state : Int
 };
 ```
 In this example the variable `state` is an Int, but let's say in an update the type is changed to Nat, which is not a big change. 
-```
+```motoko
 actor {
   stable var state : Nat
 };
@@ -329,13 +332,13 @@ This would be a breaking change for e.g. the client application if it expects an
 ### Data structure changes
 Another example of how data can be lost, is by changing the data types. 
 
-```
+```motoko
 actor {
   stable var state : Int
 };
 ```
 In this example the variable `state` is an Int, but let's say in an update the type is changed to Text: 
-```
+```motoko
 actor {
   stable var state : Text
 };
@@ -360,7 +363,7 @@ actor {
     return "Hello" # firstname # surname # " !";
   };
 }
-```
+```motoko
 Interface B
 ```motoko
 actor {
