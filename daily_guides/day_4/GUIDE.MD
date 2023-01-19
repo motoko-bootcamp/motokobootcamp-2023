@@ -382,9 +382,9 @@ reverse<T> : (l : List<T>) -> List<T>;
 ```motoko
 is_anynomous : () -> async Bool; 
 ```
-4. Write a function `find_in_buffer` that takes two arguments, buf of type **Buffer** and val of type **T**, and returns the index of the first occurrence of "val" in "buf".
+4. Write a function `find_in_buffer` that takes two arguments, buf of type **Buffer** and val of type **T**, and returns the optional index of the first occurrence of "val" in "buf".
 ```motoko
-find_in_buffer<T> :  (buf: Buffer.Buffer<T>, val: T, equal: (T,T) -> Bool) -> Nat
+find_in_buffer<T> :  (buf: Buffer.Buffer<T>, val: T, equal: (T,T) -> Bool) -> ?Nat
 ```
 5. Take a look at the code we've seen before in this guide:
 
