@@ -160,7 +160,7 @@ Aquí hay un ejemplo de una función que devuelve "verdadero" si el Caller es el
   import Principal    "mo:base/Principal";
 
   // Aquí obtendrás el Principal que hizo deploy del Canister, y la creará como una variable llamada “creator”.
-  shared ({ caller = creator }) actor {
+  shared ({ caller = creator }) actor class () {
 
     // Aquí defines una variable stable llamada “master” para guardar el valor de “creator” al State del Canister.
     stable var master : Principal = creator;
