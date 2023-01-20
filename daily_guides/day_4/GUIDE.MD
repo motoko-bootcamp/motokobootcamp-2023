@@ -103,8 +103,8 @@ A Principal is a unique and authenticated actor who can call canister functions 
 
 ### Classes of Principals
 There are (5) classes of Principals, but we only need to focus on (3). If you are curious about the other classes, you can find the [full documentation here](https://internetcomputer.org/docs/current/references/ic-interface-spec#id-classes).
-* **Self-authenticating ids** are external users with private key. This would be tpyically be users of your dapp who sign in using a wallet or identity service. These Principals are 29 bytes long.
-* **Opaque ids** are the class of Principals used for canisters. Specifically, canister Principals are shorter than user Principals and they end with "-cai". You could write yourself a helper function to identity is a Principal is a canister Principal using something like this:
+* **Self-authenticating ids** are external users with a private key. This would be tpyically be users of your dapp who sign in using a wallet or identity service. These Principals are 29 bytes long.
+* **Opaque ids** are the class of Principals used for canisters. Canister Principals are shorter than user Principals, and they end with "-cai". You could write a helper function to identity if a Principal is a canister Principal using something like this:
 ```motoko
   import Bool         "mo:base/Bool";
   import Principal    "mo:base/Principal";
@@ -184,7 +184,7 @@ Accounts are large integers (represented as 32-byte strings) which represent a u
 To derive an account from a Principal, you need what's called a "subaccount". 
 
 The exact algorithm for deriving an account is not important right now, all you need to know is that you need both a Principal and Subaccount to get an Account:
-`func accountIdentifier(principal: Principal, subaccount: Subaccount) : AccountIdentifier'
+`func accountIdentifier(principal: Principal, subaccount: Subaccount) : AccountIdentifier`
 
 A subaccount is also a large integer (which could also be represented as a 32-byte string), but it's easier to think of them almost as a "counter".
 
