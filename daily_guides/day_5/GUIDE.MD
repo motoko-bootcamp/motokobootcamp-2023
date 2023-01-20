@@ -75,7 +75,7 @@ actor {
 }
 ```
 
-> Try to deploy those 2 canisters locally and observe the delay that appears when a call goes through multiple canisters.
+> Try to deploy those 2 canisters locally and observe the delay that appears when a call goes through multiple canisters. Make sure to update the canister id to adapt to your local environment. 
 
 ## ⚛️ Atomic execution & commit points
 <i> Atomicity is a property of database transactions, which states that a transaction must be treated as a single, indivisible operation that is either completed in its entirety or not executed at all. This means that all of the changes made within a transaction must be committed to the database together, or none of them should be committed. </i>
