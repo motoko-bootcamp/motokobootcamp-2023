@@ -17,7 +17,7 @@ Participation in the Bootcamp is open and free, and you are welcome to attend an
 
 - Enroll fully in the Bootcamp (see the [#enrollment](https://discord.com/invite/42f5DB3awm) channel on Discord for more information).
 - Complete all assigned questions, coding challenges, and tasks, and submit them to your GitHub repository within 48 hours of their release.
-- Submit your completed core project before the deadline on: **Monday 23rd January 8:AM UTC**.
+- Submit your completed core project before the deadline on: **Monday 23rd January 8AM UTC**.
 
 # 📜 Daily guide 
 For each day of the camp, a guide will be provided - this guide will contain different sections: 
