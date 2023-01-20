@@ -163,7 +163,7 @@ Here is an example of a function that returns `true` if the caller is the Princi
   import Principal    "mo:base/Principal";
 
   // Here you get the Principal which deployed the canister, and set it as a variable called 'creator'
-  shared ({ caller = creator }) actor {
+  shared ({ caller = creator }) actor class () {
 
     // Here you define a stable variable called 'master' to save the value of 'creator' to the state of your canister.
     stable var master : Principal = creator;
