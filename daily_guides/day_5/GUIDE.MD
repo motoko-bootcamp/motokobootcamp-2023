@@ -150,7 +150,7 @@ A call to another canister will take around 2sec (1 round of consensus) in the s
 
 - If the canister that we are trying to contact is in the same subnet then the message will be processed in the next round. 
 
-- If the canister is another subnet then we need 2 rounds of consensus. We need one round to sign the message & send it to the subnet and one 
+- If the canister is another subnet then we need 2 rounds of consensus. We need one round to sign the message & send it to the subnet and one other round for the other subnet to sign the answer.
 
 # <a id="questions"> 🙋 Questions </a>
 1. True or False: we can prevent the heap being erased during upgrades by using a `stable` heap.  
