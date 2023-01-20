@@ -35,8 +35,7 @@ You can find the guides for the different days:
 - [Day 3️⃣](./daily_guides/day_3/GUIDE.MD) [RELEASED]
 - [Day 4️⃣](./daily_guides/day_4/GUIDE.MD) [RELEASED]
 - [Day 5️⃣](./daily_guides/day_5/GUIDE.MD) [RELEASED]
-- [Day 6️⃣](./daily_guides/day_6/GUIDE.MD) [RELEASE: 21th 9AM UTC]
-- [Day 7️⃣](./daily_guides/day_7/GUIDE.MD) [RELEASE: 22th 9AM UTC]
+- [Day 6️⃣](./daily_guides/day_6/GUIDE.MD) [RELEASE: 21th 12AM UTC]
 
 # 🍿 Lectures 
 Lectures will be held live on Zoom Webinar by mentors (each mentor is an experienced member of the community who is actively contributing to the ecosystem).
