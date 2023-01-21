@@ -60,7 +60,7 @@ my_buffer.clear(); //1
 > One drawback of having defined Buffer as a class is that contrary to Array they can't be defined as stable structure by default. Which requires some additional work when upgrading your canister - more on that later.
 
 ## HashMap & TrieMap
-In Motoko, **HashMap** and **TrieMap** have a similar interface: the only difference is that TrieMap is represented internaly by a Trie 
+In Motoko, **HashMap** and **TrieMap** have a similar interface: the only difference is that TrieMap is represented internaly by a Trie. 
 They both represent a key/value store:
 - **K** will be the type of the key (Nat, Text, Principal...)
 - **V** will be the type of the value (User data, Token balance...)
@@ -80,6 +80,9 @@ actor {
       usernames.put(caller, name);
     };
     
+    public query func all_users(): async [(Principal, Text)] {
+      return Iter.toArray(usernames.entries())
+    }
 };
 ```
 
