@@ -60,7 +60,7 @@ my_buffer.clear(); //1
 > One drawback of having defined Buffer as a class is that contrary to Array they can't be defined as stable structure by default. Which requires some additional work when upgrading your canister - more on that later.
 
 ## HashMap & TrieMap
-In Motoko, **HashMap** and **TrieMap** have a similar interface: the only difference is that TrieMap is represented internaly by a Trie 
+In Motoko, **HashMap** and **TrieMap** have a similar interface: the only difference is that TrieMap is represented internaly by a Trie. 
 They both represent a key/value store:
 - **K** will be the type of the key (Nat, Text, Principal...)
 - **V** will be the type of the value (User data, Token balance...)
@@ -80,6 +80,9 @@ actor {
       usernames.put(caller, name);
     };
     
+    public query func all_users(): async [(Principal, Text)] {
+      return Iter.toArray(usernames.entries())
+    }
 };
 ```
 
@@ -103,8 +106,8 @@ A Principal is a unique and authenticated actor who can call canister functions 
 
 ### Classes of Principals
 There are (5) classes of Principals, but we only need to focus on (3). If you are curious about the other classes, you can find the [full documentation here](https://internetcomputer.org/docs/current/references/ic-interface-spec#id-classes).
-* **Self-authenticating ids** are external users with a private key. This would be tpyically be users of your dapp who sign in using a wallet or identity service. These Principals are 29 bytes long.
-* **Opaque ids** are the class of Principals used for canisters. Canister Principals are shorter than user Principals, and they end with "-cai". You could write a helper function to identity if a Principal is a canister Principal using something like this:
+* **Self-authenticating ids** are external users with a private key. This would be typically be users of your dapp who sign in using a wallet or identity service. These Principals are 29 bytes long.
+* **Opaque ids** are the class of Principals used for canisters. Canister Principals are shorter than user Principals, and they end with `-cai`. You could write a helper function to identity if a Principal is a canister Principal using something like this:
 ```motoko
   import Bool         "mo:base/Bool";
   import Principal    "mo:base/Principal";
@@ -125,7 +128,7 @@ There are (5) classes of Principals, but we only need to focus on (3). If you ar
     
   };
 ```
-* **Anonymous id** is `0x04`, an this is the "default caller" encountered when an unauthenticated user calls functions. For example, if information from a canister needs to be presented on a webpage before the user logs in, you'd call functions to fetch this information and your canister would see that the caller is the Anonymous id (because we don't know the user's Principal until they log in). The [Motoko Base Library includes an `isAnonymous` function](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Principal#function-isanonymous) you can use to check if the caller is authenticated or not.
+* **Anonymous id** is `0x04`, and this is the "default caller" encountered when an unauthenticated user calls functions. For example, if information from a canister needs to be presented on a webpage before the user logs in, you'd call functions to fetch this information and your canister would see that the caller is the Anonymous id (because we don't know the user's Principal until they log in). The [Motoko Base Library includes an `isAnonymous` function](https://internetcomputer.org/docs/current/developer-docs/build/cdks/motoko-dfinity/base/Principal#function-isanonymous) you can use to check if the caller is authenticated or not.
 
 ## Receiving assets with a Principal (Default Subaccount)
 Some of you may be wondering why certain wallets (such as Plug) give you the option of sending assets to a Principal. We will discuss subaccounts in more detail, but the only thing worth mentioning here is that it's easy to find the "Default Account" of a Principal, so what's happening in the background is that you are actually sending assets to the Default Account of the Principal that you entered into the "Send" field. 
@@ -188,7 +191,7 @@ The exact algorithm for deriving an account is not important right now, all you 
 
 A subaccount is also a large integer (which could also be represented as a 32-byte string), but it's easier to think of them almost as a "counter".
 
-For any Principal, we refer to the account which corresponds to the subaccount which is equal to 0 as the default account of that principal. If you wanted to generate another account for that Principal, then you could use the subaccount which is equal to 1 to generate another Account. You could even pick any random 32-byte number, and then use it to get an account which coudl be controlled by that Principal. There are a lot of Accounts which could be generated for a Principal, because a 32-bit unsigned integer has a maximum value of 4,294,967,295.
+For any Principal, we refer to the account which corresponds to the subaccount which is equal to 0 as the default account of that principal. If you wanted to generate another account for that Principal, then you could use the subaccount which is equal to 1 to generate another Account. You could even pick any random 32-byte number, and then use it to get an account which could be controlled by that Principal. There are a lot of Accounts which could be generated for a Principal, because a 32-bit unsigned integer has a maximum value of 4,294,967,295.
 
 ### Principal to Account
 A canister has it's own Principal, and it often needs to store and control assets (such as tokens or NFTs) on behalf of users (who also have their own Principal).
@@ -212,7 +215,7 @@ Don't worry about understand this logic right now, but here is the example of a 
 ```
 
 Then another helper function could be used to combine this subaccount with a Principal (such as the canister's principal) to create an Account which is represented as a Blob (again, don't worry about understanding this logic right now).
-```
+```motoko
   public type AccountIdentifier = Blob;
   
   public func accountIdentifier(principal: Principal, subaccount: Subaccount) : AccountIdentifier {
@@ -278,7 +281,7 @@ actor MyActor {
 The value of the variable `state` will persist an upgrade, and not be lost.
 
 ### Non-stable types
-More complex data types like Hashmap are not stable types. This doesn't mean their values can't persist after an upgrade, it just means their persistance must be handled manually. Fortunately the functions `` and `` 
+More complex data types like Hashmap are not stable types. This doesn't mean their values can't persist after an upgrade, it just means their persistance must be handled manually. Fortunately the functions `preupgrade` and `postupgrade` can help.
 
 ```motoko
 actor MyActor {
@@ -359,7 +362,7 @@ actor {
     return "Hello" # firstname # surname # " !";
   };
 }
-```motoko
+```
 Interface B
 ```motoko
 actor {
