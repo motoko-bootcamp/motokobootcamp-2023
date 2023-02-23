@@ -45,6 +45,8 @@ You can take a look at the **<a href="https://discord.com/channels/9367227576920
 <br/>
 
 You can also view the full **<a href="https://calendar.google.com/calendar/embed?src=e0a9c944a17afc070ed77f9f10688eaac557ebd0251c5e6d0b724253506d43b3%40group.calendar.google.com" target="\_blank"> Motoko Bootcamp Calendar </a>**.
+
+To access all available lectures: [click here](https://www.youtube.com/playlist?list=PLeNYxb7vPrkhQN6-ps2krq5Un3xPD3vBQ)
 </br>
 
 If this calendar does not open up in your time zone, you can click the (+) symbol in the bottom right corner to add the events to your calendar and see them according to your time zone. Each event contains a Zoom Webinar join URL, and if necessary there are also options to call in for audio (though we recommend using the join URL).
