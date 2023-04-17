@@ -30,12 +30,12 @@ For each day of the camp, a guide will be provided - this guide will contain dif
 - A [🔗 useful-links](#🔗-useful-links) section that contains useful resources & documentation.
 
 You can find the guides for the different days:
-- [Day 1️⃣](./daily_guides/day_1/GUIDE.MD) [RELEASED]
-- [Day 2️⃣](./daily_guides/day_2/GUIDE.MD) [RELEASED]
-- [Day 3️⃣](./daily_guides/day_3/GUIDE.MD) [RELEASED]
-- [Day 4️⃣](./daily_guides/day_4/GUIDE.MD) [RELEASED]
-- [Day 5️⃣](./daily_guides/day_5/GUIDE.MD) [RELEASED]
-- [Day 6️⃣](./daily_guides/day_6/GUIDE.MD) [RELEASE: 21th 12AM UTC]
+- [Day 1️⃣](./daily_guides/day_1/GUIDE.MD)
+- [Day 2️⃣](./daily_guides/day_2/GUIDE.MD)
+- [Day 3️⃣](./daily_guides/day_3/GUIDE.MD) 
+- [Day 4️⃣](./daily_guides/day_4/GUIDE.MD) 
+- [Day 5️⃣](./daily_guides/day_5/GUIDE.MD) 
+- [Day 6️⃣](./daily_guides/day_6/GUIDE.MD) 
 
 # 🍿 Lectures 
 Lectures will be held live on Zoom Webinar by mentors (each mentor is an experienced member of the community who is actively contributing to the ecosystem).
